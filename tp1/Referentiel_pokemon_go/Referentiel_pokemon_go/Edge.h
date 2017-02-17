@@ -7,7 +7,7 @@ public:
 	Edge();
 	~Edge();
 private:
-	Node* firstNode;
-	Node* secondNode;
+	//Node* firstNode;
+	//Node* secondNode;
 };
 

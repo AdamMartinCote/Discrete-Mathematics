@@ -1,6 +1,8 @@
 #pragma once
-#include "NodeEdge.h"
-#include <vector>
+#include<vector>
+
+// forward declarations
+class Edge;
 
 class Node
 {
@@ -18,5 +20,5 @@ private:
     int gain_;
     int respawnLength_;
 
-	//std::vector<Edge*> edgeVector;
+	std::vector<Edge*> edgeVector;
 };

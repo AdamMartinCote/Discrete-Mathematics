@@ -8,16 +8,22 @@ class Node
 {
 public:
     Node();
-    Node(int gain, int respawnLength);
+    Node(std::string name, std::string type, int gain);
     virtual ~Node();
         
     void setGain(int gain);
     void setRespawnLength(int respawnLength);
     int getGain();
     int getRespawnLength();
+
+	void printNode();
+
 private:
-    bool isActive_;
+	std::string name_;
+	std::string nodeType_;
     int gain_;
+
+    bool isActive_;
     int respawnLength_;
 
 	std::vector<Edge*> edgeVector;

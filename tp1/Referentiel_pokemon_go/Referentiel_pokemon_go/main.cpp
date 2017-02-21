@@ -4,9 +4,13 @@
 
 int main()
 {
-	setlocale(LC_ALL, "");	// pour charactères français
-	RPGController rpgController;
+	setlocale(LC_ALL, "");	// affichage des charactères français
 	char input = 'z';
+
+
+	// Creation du graphe unique à partir du txt
+	RPGController rpgController;
+	rpgController.creerGraphe("data\\data_pokemon.txt");
 
 	while (input != 'd')
 	{
@@ -22,13 +26,13 @@ int main()
 		{
 		case 'a':
 			//rpgController.updateMap();
-			rpgController.creerGraphe("data_pokemon.txt");
+			rpgController.lireGraphe();
 			break;
 		case 'b':
-			rpgController.plusCourtChemin();
+			//rpgController.plusCourtChemin();
 			break;
 		case 'c':
-			rpgController.plusGrandGain();
+			//rpgController.plusGrandGain();
 			break;
 		default:
 			break;

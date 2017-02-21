@@ -1,12 +1,12 @@
+#include <iostream>
+#include <string>
 #include "Node.h"
-#include "Edge.h"
-
-
 
 Node::Node(){}
 
-Node::Node(int gain, int respawnLength)
-	:gain_(gain), respawnLength_(respawnLength), isActive_(true){}
+Node::Node(std::string name, std::string type, int gain)
+	:name_(name), nodeType_(type), gain_(gain), isActive_(true)
+{}
 
 
 Node::~Node(){}
@@ -25,4 +25,15 @@ int Node::getGain(){
        
 int Node::getRespawnLength(){
     return respawnLength_;
+}
+
+void Node::printNode()
+{
+	std::cout << "(" 
+		<< name_ << ", "
+		<< nodeType_ << ", "
+		<< gain_ << ", "
+		<< "<affichage variable des arcs>"
+		<< ")"
+		<< std::endl;
 }

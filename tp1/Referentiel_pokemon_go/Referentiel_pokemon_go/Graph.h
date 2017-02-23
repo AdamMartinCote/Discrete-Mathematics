@@ -15,9 +15,13 @@ public:
 	/// TODO faire de Node une classe abstraite
 	void addNode(std::string name, std::string type, int gain);
 
+	void addNode(Node* nodeToAdd);
 	void addEdge();
 
+
 	std::vector<Node*> getNodeVector();
+
+	Node* getNode(std::string key);
 private:
 
 	std::vector<Node*> NodeVector_;

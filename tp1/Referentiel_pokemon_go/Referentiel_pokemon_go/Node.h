@@ -22,6 +22,8 @@ public:
 
 	void printNode();
 
+	std::string getName();
+
 private:
 	std::string name_;
 	std::string nodeType_;

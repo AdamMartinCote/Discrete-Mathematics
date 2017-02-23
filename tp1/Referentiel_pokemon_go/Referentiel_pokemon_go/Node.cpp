@@ -45,3 +45,8 @@ void Node::printNode()
 		<< ")"
 		<< std::endl;
 }
+
+std::string Node::getName()
+{
+	return name_;
+}

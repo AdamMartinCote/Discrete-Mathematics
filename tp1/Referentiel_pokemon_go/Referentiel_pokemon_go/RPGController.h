@@ -33,7 +33,7 @@ public:
          */
 	void plusGrandGain(Node* startingNode, unsigned int maximumLength);
 
-private:
+//private:
 	Graph* theGraph_;
 };
 

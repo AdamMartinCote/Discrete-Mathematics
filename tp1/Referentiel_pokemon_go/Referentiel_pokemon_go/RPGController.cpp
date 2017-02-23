@@ -35,10 +35,10 @@ void RPGController::creerGraphe(std::string fileName)
 		//get first line (nodes)
 		std::getline(inputFile, line);
 
-			std::stringstream line_stream(line);
+			std::stringstream node_line_stream(line);
 
 			//parse nodes
-			while (std::getline(line_stream, item, ';'))
+			while (std::getline(node_line_stream, item, ';'))
 			{
 				std::stringstream item_stream(item);
 
@@ -54,7 +54,34 @@ void RPGController::creerGraphe(std::string fileName)
 				
 			}
 		
-		// TODO EDGE
+		//get second line (edges)
+			std::getline(inputFile, line);
+
+			std::stringstream edge_line_stream(line);
+
+			//parse edges
+			while (std::getline(edge_line_stream, item, ';'))
+			{
+				std::stringstream item_stream(item);
+
+				std::string node1;
+				std::string node2;
+				int distance;
+
+				std::getline(item_stream, node1, ',');
+				std::getline(item_stream, node2, ',');
+				item_stream >> distance;
+
+				// trouver node1
+				int adressOfNode1;
+				for (Node* node : theGraph_->getNodeVector())
+				{
+					//if()
+				}
+
+				//theGraph_->addNode(name, nodeType, gain);
+
+			}
 	}
 }
 

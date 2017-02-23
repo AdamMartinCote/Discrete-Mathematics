@@ -27,6 +27,14 @@ int Node::getRespawnLength(){
     return respawnLength_;
 }
 
+unsigned int Node::getEdgeQuantity(){
+    return edgeVector_.size();
+}
+
+std::vector<Edge*> Node::getEdges(){
+    return edgeVector_;
+}
+
 void Node::printNode()
 {
 	std::cout << "(" 

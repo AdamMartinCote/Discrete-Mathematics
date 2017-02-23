@@ -6,6 +6,7 @@
 
 #include "RPGController.h"
 #include "Node.h"
+#include "Edge.h"
 #include <iostream>
 
 
@@ -72,6 +73,21 @@ void RPGController::plusCourtChemin()
 {
 }
 
-void RPGController::plusGrandGain()
+void RPGController::plusGrandGain(Node & startingNode, unsigned int maximumLength)
 {
+    unsigned int distanceTraveled = 0;
+    unsigned int totalGain;
+    Node* currentNode = startingNode;
+    Node* nextNode = nullptr;
+    
+    unsigned int bestGain = 0;
+    for (int i = 0; i < currentNode->getEdgeQuantity(); i++){
+        Node* otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
+        if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
+                otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain){
+            totalGain += otherNode->getGain();
+        }
+    }
+    
+    //to continue...
 }

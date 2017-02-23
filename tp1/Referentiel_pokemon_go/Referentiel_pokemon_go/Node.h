@@ -14,8 +14,11 @@ public:
         
     void setGain(int gain);
     void setRespawnLength(int respawnLength);
+    
     int getGain();
     int getRespawnLength();
+    unsigned int getEdgeQuantity();
+    std::vector<Edge*> getEdges();
 
 	void printNode();
 
@@ -27,5 +30,5 @@ private:
     bool isActive_;
     int respawnLength_;
 
-	std::vector<Edge*> edgeVector;
+	std::vector<Edge*> edgeVector_;
 };

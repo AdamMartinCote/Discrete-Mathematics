@@ -98,6 +98,7 @@ void RPGController::lireGraphe()
 
 void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted)
 {
+	/*
 	unsigned int actualGain = 0;
 	// Graphe temporaire
 	Graph tempGraph;
@@ -129,7 +130,7 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	// Insérer la lus petite distance.
 
 	// préparer l'affichage du parcours obtennu.
-	
+	*/
 
 }
 

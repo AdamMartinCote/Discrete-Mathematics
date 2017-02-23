@@ -69,7 +69,7 @@ void RPGController::lireGraphe()
 	}
 }
 
-void RPGController::plusCourtChemin()
+void RPGController::plusCourtChemin(Node & startingNode, unsigned int gainWanted)
 {
 }
 
@@ -83,6 +83,7 @@ void RPGController::plusGrandGain(Node & startingNode, unsigned int maximumLengt
     unsigned int bestGain = 0;
     for (int i = 0; i < currentNode->getEdgeQuantity(); i++){
         Node* otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
+        
         if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
                 otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain){
             totalGain += otherNode->getGain();

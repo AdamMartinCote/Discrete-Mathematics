@@ -16,7 +16,7 @@ public:
         Node* getFirstNode();
         Node* getSecondNode();
         double getLength();
-        Node* getOtherNode(Node* node);
+        Node* getOtherNode(const Node* node);
 private:
 	Node* firstNode_;
 	Node* secondNode_;

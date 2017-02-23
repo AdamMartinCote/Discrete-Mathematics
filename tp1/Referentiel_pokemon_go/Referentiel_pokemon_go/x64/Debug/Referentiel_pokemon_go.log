@@ -1,0 +1,9 @@
+﻿  RPGController.cpp
+c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\rpgcontroller.cpp(87): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\rpgcontroller.cpp(81): warning C4101: 'totalGain' : variable locale non référencée
+  Edge.cpp
+  Génération de code en cours...
+  Ignoré... (aucune modification pertinente détectée)
+  main.cpp
+  Referentiel_pokemon_go.vcxproj -> C:\Users\jonathan\OneDrive\Génie logiciel\2016-2017\Hiver 2017\LOG2810\Travaux pratiques\TP1\repository\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.exe
+  Referentiel_pokemon_go.vcxproj -> C:\Users\jonathan\OneDrive\Génie logiciel\2016-2017\Hiver 2017\LOG2810\Travaux pratiques\TP1\repository\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.pdb (Full PDB)

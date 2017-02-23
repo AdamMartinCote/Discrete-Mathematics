@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include<string>
 
 // forward declarations
 class Edge;

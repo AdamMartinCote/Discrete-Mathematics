@@ -12,11 +12,11 @@ Edge::~Edge()
 {
 }
 
-void Edge::setFirstNode(Node & node){
+void Edge::setFirstNode(Node* node){
     firstNode_ = node;
 }
 
-void Edge::setSecondNode(Node & node){
+void Edge::setSecondNode(Node* node){
     secondNode_ = node;
 }
 

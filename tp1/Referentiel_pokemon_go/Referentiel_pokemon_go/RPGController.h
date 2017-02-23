@@ -24,14 +24,14 @@ public:
          * \param startingNode : The starting Node
          * \param gainWanted : The gain objective
          */
-	void plusCourtChemin(Node & startingNode, unsigned int gainWanted);
+	void plusCourtChemin(Node* startingNode, unsigned int gainWanted);
         
         //! A function that prints the maximum gain given the maximum length
         /*!
          * \param node : the first node that we know that is attached to the edge. 
          * \result : The other node of the current edge.
          */
-	void plusGrandGain(Node & startingNode, unsigned int maximumLength);
+	void plusGrandGain(Node* startingNode, unsigned int maximumLength);
 
 private:
 	Graph* theGraph_;

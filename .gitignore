@@ -1,4 +1,34 @@
 ~*
-tp1/Referentiel_pokemon_go/Referentiel_pokemon_go/Debug/
-tp1/Referentiel_pokemon_go/Referentiel_pokemon_go.VC.VC.opendb
-tp1/Referentiel_pokemon_go/Referentiel_pokemon_go.VC.db
+
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap

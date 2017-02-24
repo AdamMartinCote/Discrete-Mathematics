@@ -6,7 +6,7 @@ class Node;
 class Edge
 {
 public:
-	Edge::Edge(Node * node1, Node * node2, double length);
+	Edge::Edge(Node* node1, Node* node2, double length);
 	~Edge();
         
     void setFirstNode(Node* node);

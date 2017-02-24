@@ -24,14 +24,26 @@ void Graph::addNode(Node* nodeToAdd)
 	NodeVector_.push_back(nodeToAdd);
 }
 
-void Graph::addEdge(Node* ptrToNode1, Node* ptrToNode2, double length)
+Edge* Graph::addEdge(Node* ptrToNode1, Node* ptrToNode2, double length)
 {
+	EdgeVector_.push_back(new Edge(ptrToNode1, ptrToNode2, length));
+
+	return EdgeVector_.back();
 }
 
 void Graph::addEdge(Edge * edgeToAdd)
 {
 	EdgeVector_.push_back(edgeToAdd);
 }
+
+bool Graph::isEdgeFound(Edge* edgeToSearch) {
+	for (auto edge : EdgeVector_) {
+		if (edgeToSearch == edge)
+			return true;
+	}
+	return false;
+}
+
 
 std::vector<Node*> Graph::getNodeVector() const
 {

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Node.h"
+#include "Edge.h"
 
 class Graph
 {
@@ -26,7 +27,7 @@ public:
 	/*!
 	* \param name, type, gain
 	*/
-	void addEdge(Node * ptrToNode1, Node * ptrToNode2, double length);
+	Edge* addEdge(Node* ptrToNode1, Node* ptrToNode2, double length);
 
 	//! A function that adds an edge given by pointer
 	/*!
@@ -45,6 +46,9 @@ public:
 	* \param key : name to search for
 	*/
 	Node* getNode(std::string key);
+
+
+	bool isEdgeFound(Edge* edgeToSearch);
 private:
 	std::vector<Node*> NodeVector_;
 	std::vector<Edge*> EdgeVector_;

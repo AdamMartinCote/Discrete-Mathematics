@@ -35,6 +35,10 @@ std::vector<Edge*> Node::getEdges(){
     return edgeVector_;
 }
 
+void Node::addEdge(Edge* edge) {
+	edgeVector_.push_back(edge);
+}
+
 void Node::printNode()
 {
 	std::cout << "(" 

@@ -21,17 +21,6 @@ RPGController::~RPGController()
 {
 }
 
-void RPGController::GenerateMockGraph()
-{
-	Node p1 = Node("p1", "pokemon", 5);
-	Node p2 = Node("p2", "pokemon", 5);
-	Edge e1A2 = Edge(&p1, &p2, 50);
-
-	theGraph_->addNode(&p1);
-	theGraph_->addNode(&p2);
-
-}
-
 void RPGController::creerGraphe(std::string fileName)
 {
 	std::ifstream inputFile;
@@ -86,10 +75,10 @@ void RPGController::creerGraphe(std::string fileName)
 				Node * ptrToNode2 = theGraph_->getNode(node2);
 
 				// add the 2 potential node pointers to the new edge
-				theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
+				Edge* ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
 
-				// TODO add the new edge both of the nodes edge vectors
-
+				ptrToNode1->addEdge(ptrEdge);
+				ptrToNode2->addEdge(ptrEdge);
 			}
 	}
 	else std::cout << "files failed to open" << std::endl;
@@ -108,6 +97,7 @@ void RPGController::lireGraphe()
 
 void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted)
 {
+
 	std::string path = "";
 	unsigned int actualGain = 0;
 	Graph tempGraph;
@@ -126,9 +116,14 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 		
 		for (auto edge : currentEdges)
 		{
+			if (tempGraph.isEdgeFound(edge))
+				continue;
 			if(shortestEdge == nullptr)
 				shortestEdge = edge;
-			else if ((edge->getLength() < shortestEdge->getLength()) &&	(shortestEdge->getOtherNode(currentNode)->isActive()))
+			else if (
+					(edge->getLength() < shortestEdge->getLength()) &&	
+					(shortestEdge->getOtherNode(currentNode)->isActive())					
+					)
 				shortestEdge = edge;
 		}
 
@@ -136,6 +131,7 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 		path += "->" + currentNode->getName();
 
 		tempGraph.addNode(shortestEdge->getOtherNode(currentNode));
+		tempGraph.addEdge(shortestEdge);
 		actualGain += currentNode->getGain();
 		currentEdges = currentNode->getEdges();
 	}

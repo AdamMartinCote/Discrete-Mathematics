@@ -19,6 +19,7 @@ public:
     int getRespawnLength();
     unsigned int getEdgeQuantity();
     std::vector<Edge*> getEdges();
+	void addEdge(Edge*);
 
 	void printNode();
 

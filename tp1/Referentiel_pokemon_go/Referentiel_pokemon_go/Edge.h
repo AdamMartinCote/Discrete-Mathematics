@@ -12,11 +12,11 @@ public:
     void setFirstNode(Node* node);
     void setSecondNode(Node* node);
     void setLength(double length);
-        
+       
     Node* getFirstNode();
     Node* getSecondNode();
     double getLength();
-    Node* getOtherNode(Node* node);
+    Node* getOtherNode(const Node* node);
 private:
 	Node* firstNode_;
 	Node* secondNode_;

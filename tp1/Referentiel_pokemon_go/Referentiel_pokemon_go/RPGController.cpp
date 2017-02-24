@@ -98,9 +98,8 @@ void RPGController::lireGraphe()
 
 void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted)
 {
-	/*
+	std::string path = "";
 	unsigned int actualGain = 0;
-	// Graphe temporaire
 	Graph tempGraph;
 
 	Node* currentNode = theGraph_->getNode(startKeyNode);
@@ -109,29 +108,27 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	tempGraph.addNode(currentNode);
 	actualGain += currentNode->getGain();
 
-	// tant que le gain n'est pas atteint.
+	path += currentNode->getName();
+
 	while (actualGain < gainWanted)
 	{
 		Edge* shortestEdge;
 		
 		for (auto edge : currentEdges)
 		{
-			if (edge->getLength() < shortestEdge->getLength())
+			if ((edge->getLength() < shortestEdge->getLength()) && shortestEdge->getOtherNode(currentNode)->isActive())
 				shortestEdge = edge;
 		}
 
 		currentNode = shortestEdge->getOtherNode(currentNode);
+		path += "->" + currentNode->getName();
 
 		tempGraph.addNode(shortestEdge->getOtherNode(currentNode));
 		actualGain += currentNode->getGain();
+		currentEdges = currentNode->getEdges();
 	}
 
-	// Vérifier les sommet adjacents et la plus petite distance.
-	// Insérer la lus petite distance.
-
-	// préparer l'affichage du parcours obtennu.
-	*/
-
+	std::cout << path;
 }
 
 void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength)

@@ -3,7 +3,8 @@
 
 
 
-Edge::Edge()
+Edge::Edge(Node * node1, Node * node2, double length)
+	:firstNode_(node1), secondNode_(node2), length_(length)
 {
 }
 

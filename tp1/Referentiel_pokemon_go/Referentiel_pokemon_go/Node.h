@@ -24,6 +24,11 @@ public:
 
 	std::string getName();
 
+	bool isActive()
+	{
+		return isActive_;
+	}
+
 private:
 	std::string name_;
 	std::string nodeType_;

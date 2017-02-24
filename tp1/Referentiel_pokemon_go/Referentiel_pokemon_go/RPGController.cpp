@@ -72,11 +72,18 @@ void RPGController::creerGraphe(std::string fileName)
 				std::getline(item_stream, node2, ',');
 				item_stream >> distance;
 
+
 				// trouver node1
-				int adressOfNode1;
-				for (Node* node : theGraph_->getNodeVector())
+				Node * ptrToNode1 = nullptr;
+				Node * ptrToNode2 = nullptr;
+
+				for (Node* aNode : theGraph_->getNodeVector())
 				{
-					//if()
+					if (aNode->getName() == node1) ptrToNode1 = aNode;
+				}
+				for (Node* aNode : theGraph_->getNodeVector())
+				{
+					if (aNode->getName() == node2) ptrToNode2 = aNode;
 				}
 
 				//theGraph_->addNode(name, nodeType, gain);

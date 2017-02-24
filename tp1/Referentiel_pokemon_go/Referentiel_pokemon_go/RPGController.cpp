@@ -21,6 +21,17 @@ RPGController::~RPGController()
 {
 }
 
+void RPGController::GenerateMockGraph()
+{
+	Node p1 = Node("p1", "pokemon", 5);
+	Node p2 = Node("p2", "pokemon", 5);
+	Edge e1A2 = Edge(&p1, &p2, 50);
+
+	theGraph_->addNode(&p1);
+	theGraph_->addNode(&p2);
+
+}
+
 void RPGController::creerGraphe(std::string fileName)
 {
 	std::ifstream inputFile;
@@ -111,11 +122,13 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 
 	while (actualGain < gainWanted)
 	{
-		Edge* shortestEdge;
+		Edge* shortestEdge = nullptr;
 		
 		for (auto edge : currentEdges)
 		{
-			if ((edge->getLength() < shortestEdge->getLength()) && shortestEdge->getOtherNode(currentNode)->isActive())
+			if(shortestEdge == nullptr)
+				shortestEdge = edge;
+			else if ((edge->getLength() < shortestEdge->getLength()) &&	(shortestEdge->getOtherNode(currentNode)->isActive()))
 				shortestEdge = edge;
 		}
 

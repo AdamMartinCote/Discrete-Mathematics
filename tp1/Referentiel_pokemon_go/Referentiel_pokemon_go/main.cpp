@@ -6,6 +6,8 @@ int main()
 {
 	setlocale(LC_ALL, "");	// affichage des charact�res fran�ais
 	char input = 'z';
+	std::string nodeName;
+	unsigned int wantedGain;
 
 
 	// Creation du graphe unique � partir du txt
@@ -29,7 +31,14 @@ int main()
 			rpgController.lireGraphe();
 			break;
 		case 'b':
-			//rpgController.plusCourtChemin();
+			std::cout <<
+				"Entrer le nom du noeud ou debuter:\n";
+			std::cin >> nodeName;
+			std::cout <<
+				"Entrer le gain voulu:\n";
+			std::cin >> wantedGain;
+
+			rpgController.plusCourtChemin(nodeName, wantedGain);
 			break;
 		case 'c':
 			//rpgController.plusGrandGain();

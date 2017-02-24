@@ -33,6 +33,9 @@ public:
          */
 	void plusGrandGain(Node* startingNode, unsigned int maximumLength);
 
+		//! A function that generate a graph for testing purpose.
+	void GenerateMockGraph();
+
 //private:
 	Graph* theGraph_;
 };

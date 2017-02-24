@@ -35,27 +35,26 @@ void RPGController::creerGraphe(std::string fileName)
 		//get first line (nodes)
 		std::getline(inputFile, line);
 
-			std::stringstream node_line_stream(line);
+		std::stringstream node_line_stream(line);
 
-			//parse nodes
-			while (std::getline(node_line_stream, item, ';'))
-			{
-				std::stringstream item_stream(item);
+		//parse nodes
+		while (std::getline(node_line_stream, item, ';'))
+		{
+			std::stringstream item_stream(item);
 
-				std::string name;
-				std::string nodeType;
-				int gain;
+			std::string name;
+			std::string nodeType;
+			int gain;
 
-				std::getline(item_stream, name, ',');
-				std::getline(item_stream, nodeType, ',');
-				item_stream >> gain;
+			std::getline(item_stream, name, ',');
+			std::getline(item_stream, nodeType, ',');
+			item_stream >> gain;
 
-				theGraph_->addNode(name, nodeType, gain);
-				
-			}
+			theGraph_->addNode(name, nodeType, gain);
+		}
 		
 		//get second line (edges)
-			std::getline(inputFile, line);
+		std::getline(inputFile, line);
 
 			std::stringstream edge_line_stream(line);
 
@@ -72,17 +71,17 @@ void RPGController::creerGraphe(std::string fileName)
 				std::getline(item_stream, node2, ',');
 				item_stream >> distance;
 
-				// trouver node1
-				int adressOfNode1;
-				for (Node* node : theGraph_->getNodeVector())
-				{
-					//if()
-				}
+				Node * ptrToNode1 = theGraph_->getNode(node1);
+				Node * ptrToNode2 = theGraph_->getNode(node2);
 
-				//theGraph_->addNode(name, nodeType, gain);
+				// add the 2 potential node pointers to the new edge
+				theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
+
+				// TODO add the new edge both of the nodes edge vectors
 
 			}
 	}
+	else std::cout << "files failed to open" << std::endl;
 }
 
 void RPGController::lireGraphe()

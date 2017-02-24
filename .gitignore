@@ -34,3 +34,4 @@ ipch/
 *.sap
 
 ./tp1/Referentiel_pokemon_go/Referentiel_pokemon_go.VC.db
+*/.suo

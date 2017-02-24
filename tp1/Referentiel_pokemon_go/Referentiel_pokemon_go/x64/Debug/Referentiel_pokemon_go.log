@@ -1,16 +1,2 @@
-﻿  RPGController.cpp
-c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\rpgcontroller.cpp(76): warning C4101: 'adressOfNode1' : variable locale non référencée
-c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\rpgcontroller.cpp(146): warning C4018: '<' : incompatibilité signed/unsigned
-c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\rpgcontroller.cpp(140): warning C4101: 'totalGain' : variable locale non référencée
-  Node.cpp
-c:\users\jonathan\onedrive\génie logiciel\2016-2017\hiver 2017\log2810\travaux pratiques\tp1\repository\tp_2810\tp1\referentiel_pokemon_go\referentiel_pokemon_go\node.cpp(31): warning C4267: 'return' : conversion de 'size_t' en 'unsigned int', perte possible de données
-  Graph.cpp
-  Edge.cpp
-  Génération de code en cours...
-  Ignoré... (aucune modification pertinente détectée)
-  main.cpp
-  Pokestop.cpp
-  Pokemon.cpp
-  Arena.cpp
-  Referentiel_pokemon_go.vcxproj -> C:\Users\jonathan\OneDrive\Génie logiciel\2016-2017\Hiver 2017\LOG2810\Travaux pratiques\TP1\repository\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.exe
-  Referentiel_pokemon_go.vcxproj -> C:\Users\jonathan\OneDrive\Génie logiciel\2016-2017\Hiver 2017\LOG2810\Travaux pratiques\TP1\repository\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.pdb (Full PDB)
+﻿  Referentiel_pokemon_go.vcxproj -> C:\Users\Adam\Google Drive\Poly\H-2017\LOG2810\tp\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.exe
+  Referentiel_pokemon_go.vcxproj -> C:\Users\Adam\Google Drive\Poly\H-2017\LOG2810\tp\tp_2810\tp1\Referentiel_pokemon_go\x64\Debug\Referentiel_pokemon_go.pdb (Full PDB)

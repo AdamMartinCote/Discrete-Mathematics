@@ -4,11 +4,11 @@
 
 int main()
 {
-	setlocale(LC_ALL, "");	// affichage des charactères français
+	setlocale(LC_ALL, "");	// affichage des charactï¿½res franï¿½ais
 	char input = 'z';
 
 
-	// Creation du graphe unique à partir du txt
+	// Creation du graphe unique ï¿½ partir du txt
 	RPGController rpgController;
 	rpgController.creerGraphe("data\\data_pokemon.txt");
 
@@ -16,8 +16,8 @@ int main()
 	{
 		std::cout <<
 			"(a) Mettre a jour la carte.\n"
-			"(b) Déterminer le plus court chemin(et demander le gain minimal a obtenir)\n"
-			"(c) Déterminer le plus grand gain(et demander la distance maximale a parcourir)\n"
+			"(b) Dï¿½terminer le plus court chemin(et demander le gain minimal a obtenir)\n"
+			"(c) Dï¿½terminer le plus grand gain(et demander la distance maximale a parcourir)\n"
 			"(d) Quitter\n";
 
 		std::cin >> input;

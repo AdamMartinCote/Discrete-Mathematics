@@ -24,7 +24,16 @@ void Graph::addNode(Node* nodeToAdd)
 	NodeVector_.push_back(nodeToAdd);
 }
 
-std::vector<Node*> Graph::getNodeVector()
+void Graph::addEdge(Node* ptrToNode1, Node* ptrToNode2, double length)
+{
+}
+
+void Graph::addEdge(Edge * edgeToAdd)
+{
+	EdgeVector_.push_back(edgeToAdd);
+}
+
+std::vector<Node*> Graph::getNodeVector() const
 {
 	return NodeVector_;
 }

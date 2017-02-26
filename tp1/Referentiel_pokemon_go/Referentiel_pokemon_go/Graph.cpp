@@ -36,7 +36,7 @@ void Graph::addEdge(Edge * edgeToAdd)
 	EdgeVector_.push_back(edgeToAdd);
 }
 
-bool Graph::isEdgeFound(Edge* edgeToSearch) {
+bool Graph::isEdgeFound(Edge* edgeToSearch) const{
 	for (auto edge : EdgeVector_) {
 		if (edgeToSearch == edge)
 			return true;
@@ -50,7 +50,7 @@ std::vector<Node*> Graph::getNodeVector() const
 	return NodeVector_;
 }
 
-Node * Graph::getNode(std::string key)
+Node * Graph::getNode(std::string key) const
 {
 	for(auto aNode : NodeVector_)
 	{

@@ -42,7 +42,7 @@ double Edge::getLength()const {
  * \param node : the first node that we know that is attached to the edge. 
  * \result : The other node of the current edge.
  */
-Node* Edge::getOtherNode(const Node* node){
+Node* Edge::getOtherNode(const Node* node) const{
     if (node == firstNode_)
         return secondNode_;
     else if (node == secondNode_){

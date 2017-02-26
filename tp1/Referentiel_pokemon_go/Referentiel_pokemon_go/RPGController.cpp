@@ -10,7 +10,6 @@
 #include <iostream>
 
 
-
 RPGController::RPGController()
 {
 	theGraph_ = nullptr;
@@ -25,7 +24,8 @@ void RPGController::creerGraphe(std::string fileName)
 {
 	std::ifstream inputFile;
 	inputFile.open(fileName);
-	theGraph_ = new Graph();
+
+	theGraph_ = std::make_unique<Graph>();
 
 	if (inputFile.is_open()) {
 

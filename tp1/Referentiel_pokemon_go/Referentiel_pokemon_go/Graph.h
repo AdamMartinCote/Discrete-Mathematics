@@ -45,10 +45,10 @@ public:
 	/*!
 	* \param key : name to search for
 	*/
-	Node* getNode(std::string key);
+	Node* getNode(std::string key) const;
 
 
-	bool isEdgeFound(Edge* edgeToSearch);
+	bool isEdgeFound(Edge* edgeToSearch) const;
 private:
 	std::vector<Node*> NodeVector_;
 	std::vector<Edge*> EdgeVector_;

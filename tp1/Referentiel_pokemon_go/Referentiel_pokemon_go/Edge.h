@@ -13,10 +13,10 @@ public:
     void setSecondNode(Node* node);
     void setLength(double length);
        
-    Node* getFirstNode()const;
-    Node* getSecondNode()const;
+    Node* getFirstNode() const;
+    Node* getSecondNode() const;
     double getLength() const;
-    Node* getOtherNode(const Node* node);
+    Node* getOtherNode(const Node* node) const;
 
 private:
 	Node* firstNode_;

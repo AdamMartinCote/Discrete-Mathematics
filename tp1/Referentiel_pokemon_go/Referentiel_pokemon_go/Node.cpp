@@ -2,6 +2,7 @@
 #include <string>
 #include "Node.h"
 #include "Edge.h"
+#include <memory>
 
 Node::Node(){}
 
@@ -31,11 +32,11 @@ unsigned int Node::getEdgeQuantity() const {
 	return edgeVector_.size();
 }
 
-std::vector<Edge*> Node::getEdges()const{
+std::vector<std::shared_ptr<Edge>> Node::getEdges() const{
     return edgeVector_;
 }
 
-void Node::addEdge(Edge* edge) {
+void Node::addEdge(std::shared_ptr<Edge> edge) {
 	edgeVector_.push_back(edge);
 }
 
@@ -47,7 +48,7 @@ void Node::printNode() const
 		<< gain_ << ", (";
 	// print edges, omitting the starting node for simplicity
 	bool isFirstElement = true;
-	for(Edge* i : edgeVector_)
+	for(std::shared_ptr<Edge> i : edgeVector_)
 	{
 		if (!isFirstElement) std::cout << ", ";
 		std::cout << "(";

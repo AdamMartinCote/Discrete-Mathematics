@@ -1,26 +1,26 @@
 #pragma once
+#include <memory>
 
-// forward declarations
 class Node;
 
 class Edge
 {
 public:
-	Edge::Edge(Node* node1, Node* node2, double length);
+	Edge::Edge(std::shared_ptr<Node> node1, std::shared_ptr<Node> node2, double length);
 	~Edge();
         
-    void setFirstNode(Node* node);
-    void setSecondNode(Node* node);
+    void setFirstNode(std::shared_ptr<Node> node);
+    void setSecondNode(std::shared_ptr<Node> node);
     void setLength(double length);
        
-    Node* getFirstNode() const;
-    Node* getSecondNode() const;
+	std::shared_ptr<Node> getFirstNode() const;
+	std::shared_ptr<Node> getSecondNode() const;
     double getLength() const;
-    Node* getOtherNode(const Node* node) const;
+	std::shared_ptr<Node> getOtherNode(const std::shared_ptr<Node> node) const;
 
 private:
-	Node* firstNode_;
-	Node* secondNode_;
+	std::shared_ptr<Node> firstNode_;
+	std::shared_ptr<Node> secondNode_;
 	double length_;
 };
 

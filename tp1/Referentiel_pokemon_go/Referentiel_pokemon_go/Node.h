@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include <memory>
 
 // forward declarations
 class Edge;
@@ -21,9 +22,9 @@ public:
 
 	unsigned int Node::getEdgeQuantity() const;
 
-    std::vector<Edge*> getEdges() const;
+    std::vector<std::shared_ptr<Edge>> getEdges() const;
 
-	void addEdge(Edge*);
+	void addEdge(std::shared_ptr<Edge> edge);
 
 	void printNode() const;
 
@@ -39,5 +40,5 @@ private:
     bool isActive_;
     int respawnLength_;
 
-	std::vector<Edge*> edgeVector_;
+	std::vector<std::shared_ptr<Edge>> edgeVector_;
 };

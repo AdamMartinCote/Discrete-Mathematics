@@ -71,11 +71,11 @@ void RPGController::creerGraphe(std::string fileName)
 				std::getline(item_stream, node2, ',');
 				item_stream >> distance;
 
-				Node * ptrToNode1 = theGraph_->getNode(node1);
-				Node * ptrToNode2 = theGraph_->getNode(node2);
+				std::shared_ptr<Node> ptrToNode1 = theGraph_->getNode(node1);
+				std::shared_ptr<Node> ptrToNode2 = theGraph_->getNode(node2);
 
 				// add the 2 potential node pointers to the new edge
-				Edge* ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
+				std::shared_ptr<Edge> ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
 
 				ptrToNode1->addEdge(ptrEdge);
 				ptrToNode2->addEdge(ptrEdge);
@@ -89,7 +89,7 @@ void RPGController::lireGraphe() const
 	if (RPGController::theGraph_ == nullptr) return;
 
 	std::cout << "Affichage des sommets: " << std::endl;
-	for (Node* node : theGraph_->getNodeVector())
+	for (std::shared_ptr<Node> node : theGraph_->getNodeVector())
 	{
 		node->printNode();
 	}
@@ -102,8 +102,8 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	unsigned int actualGain = 0;
 	Graph tempGraph;
 
-	Node* currentNode = theGraph_->getNode(startKeyNode);
-	std::vector<Edge*> currentEdges = currentNode->getEdges();
+	std::shared_ptr<Node> currentNode = theGraph_->getNode(startKeyNode);
+	std::vector<std::shared_ptr<Edge>> currentEdges = currentNode->getEdges();
 
 	tempGraph.addNode(currentNode);
 	actualGain += currentNode->getGain();
@@ -112,9 +112,9 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 
 	while (actualGain < gainWanted)
 	{
-		Edge* shortestEdge = nullptr;
+		std::shared_ptr<Edge> shortestEdge = nullptr;
 		
-		for (auto edge : currentEdges)
+		for (std::shared_ptr<Edge> edge : currentEdges)
 		{
 			if (tempGraph.isEdgeFound(edge))
 				continue;
@@ -139,12 +139,12 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	std::cout << path << std::endl;
 }
 
-void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength) const
+void RPGController::plusGrandGain(std::shared_ptr<Node> startingNode, unsigned int maximumLength) const
 {
     unsigned int distanceTraveled = 0;
     unsigned int totalGain;
-    Node* currentNode = startingNode;
-    Node* nextNode = startingNode;
+	std::shared_ptr<Node> currentNode = startingNode;
+	std::shared_ptr<Node> nextNode = startingNode;
     
     unsigned int bestGain = 0;
     
@@ -152,7 +152,7 @@ void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength
         currentNode = nextNode;
         nextNode = nullptr;
         for (int i = 0; i < currentNode->getEdgeQuantity(); i++){
-        Node* otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
+			std::shared_ptr<Node> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
         
             if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
                 otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain){

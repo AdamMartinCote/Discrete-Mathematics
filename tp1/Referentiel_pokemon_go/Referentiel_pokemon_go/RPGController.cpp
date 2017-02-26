@@ -136,7 +136,7 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 		currentEdges = currentNode->getEdges();
 	}
 
-	std::cout << path;
+	std::cout << path << std::endl;
 }
 
 void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength)

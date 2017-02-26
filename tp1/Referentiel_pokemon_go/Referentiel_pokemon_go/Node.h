@@ -1,6 +1,5 @@
 #pragma once
 #include<vector>
-#include<string>
 
 // forward declarations
 class Edge;
@@ -11,24 +10,26 @@ public:
     Node();
     Node(std::string name, std::string type, int gain);
     virtual ~Node();
-        
-    void setGain(int gain);
-    void setRespawnLength(int respawnLength);
-    
-    int getGain();
-    int getRespawnLength();
-    unsigned int getEdgeQuantity();
-    std::vector<Edge*> getEdges();
+
+	void setGain(int gain);
+
+	void Node::setRespawnLength(int respawnLength);
+
+	int getGain() const;
+
+	int getRespawnLength() const;
+
+	unsigned int Node::getEdgeQuantity() const;
+
+    std::vector<Edge*> getEdges() const;
+
 	void addEdge(Edge*);
 
-	void printNode();
+	void printNode() const;
 
-	std::string getName();
+	std::string getName() const;
 
-	bool isActive()
-	{
-		return isActive_;
-	}
+	bool isActive() const;
 
 private:
 	std::string name_;

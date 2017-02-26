@@ -1,6 +1,6 @@
 #include "Edge.h"
 #include "Node.h"
-
+#include <iostream>
 
 
 Edge::Edge(Node * node1, Node * node2, double length)
@@ -25,15 +25,15 @@ void Edge::setLength(double length){
     length_ = length;
 }
 
-Node* Edge::getFirstNode(){
+Node* Edge::getFirstNode()const{
     return firstNode_;
 }
 
-Node* Edge::getSecondNode(){
+Node* Edge::getSecondNode()const{
     return secondNode_;
 }
 
-double Edge::getLength(){
+double Edge::getLength()const {
     return length_;
 }
 
@@ -50,3 +50,5 @@ Node* Edge::getOtherNode(const Node* node){
     }
     else return nullptr;
 }
+
+

@@ -1,11 +1,13 @@
 #pragma once
-#include "Node.h"
+#include <string>
+#include "AbstractNode.h"
 
-class Arena : public Node
+class Arena : public AbstractNode
 {
 public:
-	Arena();
-        Arena(int gain, int respawnLength);
+    Arena(std::string name, int gain);
+
+	virtual std::string getNodeType() const override;
 	~Arena();
 };
 

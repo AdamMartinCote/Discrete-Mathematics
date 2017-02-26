@@ -1,10 +1,11 @@
 #pragma once
-#include "Node.h"
+#include "AbstractNode.h"
 
-class Pokestop : public Node
+class Pokestop : public AbstractNode
 {
 public:
-	Pokestop();
+	Pokestop(std::string name, int gain);
 	~Pokestop();
+	virtual std::string getNodeType() const override;
 };
 

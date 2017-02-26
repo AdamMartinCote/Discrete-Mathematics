@@ -5,9 +5,12 @@
 #include <sstream>
 
 #include "RPGController.h"
-#include "Node.h"
+#include "AbstractNode.h"
 #include "Edge.h"
 #include <iostream>
+#include "Pokemon.h"
+#include "Arena.h"
+#include "Pokestop.h"
 
 
 RPGController::RPGController()
@@ -44,13 +47,35 @@ void RPGController::creerGraphe(std::string fileName)
 
 			std::string name;
 			std::string nodeType;
+
 			int gain;
 
 			std::getline(item_stream, name, ',');
 			std::getline(item_stream, nodeType, ',');
 			item_stream >> gain;
 
-			theGraph_->addNode(name, nodeType, gain);
+			// identify Node type
+			if(nodeType == "pokemon")
+			{
+				std::shared_ptr<Pokemon> nodeToAdd = std::make_shared<Pokemon>(name, gain);
+				theGraph_->addNode(nodeToAdd);
+			}
+			else if(nodeType == "arene")
+			{
+				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
+				theGraph_->addNode(nodeToAdd);
+			}
+			else if(nodeType == "pokestop")
+			{
+				std::shared_ptr<Pokestop> nodeToAdd = std::make_shared<Pokestop>(name, gain);
+				theGraph_->addNode(nodeToAdd);
+			}
+			else
+			{
+				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
+				theGraph_->addNode(nodeToAdd);
+			}
+
 		}
 		
 		//get second line (edges)
@@ -71,8 +96,8 @@ void RPGController::creerGraphe(std::string fileName)
 				std::getline(item_stream, node2, ',');
 				item_stream >> distance;
 
-				std::shared_ptr<Node> ptrToNode1 = theGraph_->getNode(node1);
-				std::shared_ptr<Node> ptrToNode2 = theGraph_->getNode(node2);
+				std::shared_ptr<AbstractNode> ptrToNode1 = theGraph_->getNode(node1);
+				std::shared_ptr<AbstractNode> ptrToNode2 = theGraph_->getNode(node2);
 
 				// add the 2 potential node pointers to the new edge
 				std::shared_ptr<Edge> ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
@@ -89,10 +114,11 @@ void RPGController::lireGraphe() const
 	if (RPGController::theGraph_ == nullptr) return;
 
 	std::cout << "Affichage des sommets: " << std::endl;
-	for (std::shared_ptr<Node> node : theGraph_->getNodeVector())
+	for (std::shared_ptr<AbstractNode> node : theGraph_->getNodeVector())
 	{
 		node->printNode();
 	}
+	std::cout << std::endl;
 }
 
 void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
@@ -102,8 +128,8 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	unsigned int actualGain = 0;
 	Graph tempGraph;
 
-	std::shared_ptr<Node> currentNode = theGraph_->getNode(startKeyNode);
-	std::vector<std::shared_ptr<Edge>> currentEdges = currentNode->getEdges();
+	auto currentNode = theGraph_->getNode(startKeyNode);
+	auto currentEdges = currentNode->getEdges();
 
 	tempGraph.addNode(currentNode);
 	actualGain += currentNode->getGain();
@@ -139,20 +165,20 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	std::cout << path << std::endl;
 }
 
-void RPGController::plusGrandGain(std::shared_ptr<Node> startingNode, unsigned int maximumLength) const
+void RPGController::plusGrandGain(std::shared_ptr<AbstractNode> startingNode, unsigned int maximumLength) const
 {
     unsigned int distanceTraveled = 0;
     unsigned int totalGain;
-	std::shared_ptr<Node> currentNode = startingNode;
-	std::shared_ptr<Node> nextNode = startingNode;
+	std::shared_ptr<AbstractNode> currentNode = startingNode;
+	std::shared_ptr<AbstractNode> nextNode = startingNode;
     
     unsigned int bestGain = 0;
     
     while(nextNode!= nullptr){
         currentNode = nextNode;
         nextNode = nullptr;
-        for (int i = 0; i < currentNode->getEdgeQuantity(); i++){
-			std::shared_ptr<Node> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
+        for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++){
+			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
         
             if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
                 otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain){

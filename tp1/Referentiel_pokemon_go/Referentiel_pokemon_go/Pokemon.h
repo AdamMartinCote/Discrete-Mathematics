@@ -1,13 +1,16 @@
 #pragma once
-#include "Node.h"
 #include <string>
+#include "AbstractNode.h"
 
-class Pokemon : public Node
+enum class PokemonType { rare, normal, frequent };
+
+class Pokemon : public AbstractNode
 {
 public:
-	Pokemon(std::string typePokemon);
+	Pokemon(std::string name, int gain);
+	virtual std::string getNodeType() const override;
 	~Pokemon();
 private:
-	std::string typePokemon_;
+	PokemonType typePokemon_;
 };
 

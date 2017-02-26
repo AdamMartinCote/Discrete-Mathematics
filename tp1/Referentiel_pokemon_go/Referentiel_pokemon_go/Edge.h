@@ -1,26 +1,26 @@
 #pragma once
 #include <memory>
+#include "AbstractNode.h"
 
-class Node;
 
 class Edge
 {
 public:
-	Edge::Edge(std::shared_ptr<Node> node1, std::shared_ptr<Node> node2, double length);
+	Edge::Edge(std::shared_ptr<AbstractNode> node1, std::shared_ptr<AbstractNode> node2, double length);
 	~Edge();
         
-    void setFirstNode(std::shared_ptr<Node> node);
-    void setSecondNode(std::shared_ptr<Node> node);
+    void setFirstNode(std::shared_ptr<AbstractNode> node);
+    void setSecondNode(std::shared_ptr<AbstractNode> node);
     void setLength(double length);
        
-	std::shared_ptr<Node> getFirstNode() const;
-	std::shared_ptr<Node> getSecondNode() const;
+	std::shared_ptr<AbstractNode> getFirstNode() const;
+	std::shared_ptr<AbstractNode> getSecondNode() const;
     double getLength() const;
-	std::shared_ptr<Node> getOtherNode(const std::shared_ptr<Node> node) const;
+	std::shared_ptr<AbstractNode> getOtherNode(const std::shared_ptr<AbstractNode> node) const;
 
 private:
-	std::shared_ptr<Node> firstNode_;
-	std::shared_ptr<Node> secondNode_;
+	std::shared_ptr<AbstractNode> firstNode_;
+	std::shared_ptr<AbstractNode> secondNode_;
 	double length_;
 };
 

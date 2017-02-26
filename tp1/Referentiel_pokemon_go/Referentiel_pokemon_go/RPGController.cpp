@@ -84,7 +84,7 @@ void RPGController::creerGraphe(std::string fileName)
 	else std::cout << "files failed to open" << std::endl;
 }
 
-void RPGController::lireGraphe()
+void RPGController::lireGraphe() const
 {
 	if (RPGController::theGraph_ == nullptr) return;
 
@@ -95,7 +95,7 @@ void RPGController::lireGraphe()
 	}
 }
 
-void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted)
+void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
 {
 
 	std::string path = "";
@@ -139,7 +139,7 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	std::cout << path << std::endl;
 }
 
-void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength)
+void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength) const
 {
     unsigned int distanceTraveled = 0;
     unsigned int totalGain;

@@ -72,8 +72,13 @@ public:
 	/*!
 	* \param : The length to set for the length_ attribute
 	*/
-
 	void setRespawnLength(int respawnLength);
+
+	//! Set isActive to True
+	void setToActive();
+
+	//! Set isActive to false
+	void setToInactive();
 #pragma endregion Set
 
 	//! A function to add a new edge to the Node

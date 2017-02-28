@@ -22,6 +22,14 @@ void AbstractNode::setGain(int gain) {
 void AbstractNode::setRespawnLength(int respawnLength) {
 	respawnLength_ = respawnLength;
 }
+
+void AbstractNode::setToActive() {
+	isActive_ = true;
+}
+
+void AbstractNode::setToInactive() {
+	isActive_ = false;
+}
 #pragma endregion Set
 
 #pragma region Get

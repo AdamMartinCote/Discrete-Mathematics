@@ -151,6 +151,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="AbstractNode.cpp" />
+    <ClCompile Include="NodeActivity.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Pokestop.cpp" />
     <ClCompile Include="RPGController.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="AbstractNode.h" />
+    <ClInclude Include="NodeActivity.h" />
     <ClInclude Include="NodeType.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="Pokestop.h" />

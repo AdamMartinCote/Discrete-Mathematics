@@ -42,6 +42,9 @@
     <ClCompile Include="AbstractNode.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
+    <ClCompile Include="NodeActivity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokestop.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AbstractNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NodeActivity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

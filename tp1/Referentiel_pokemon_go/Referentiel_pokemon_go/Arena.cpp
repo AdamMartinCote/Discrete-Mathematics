@@ -7,9 +7,10 @@ Arena::Arena(std::string name, int gain)
 {
 }
 
+Arena::~Arena() {}
+
 std::string Arena::getNodeType() const
 {
 	return "arene";
 }
 
-Arena::~Arena(){}

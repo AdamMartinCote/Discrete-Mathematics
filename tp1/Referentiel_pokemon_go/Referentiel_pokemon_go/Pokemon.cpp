@@ -7,6 +7,7 @@
 #define LENGTH_NORMAL_RESPAWN 200
 #define LENGTH_FREQUENT_RESPAWN 100
 
+#pragma region ConstructorDestructor
 Pokemon::Pokemon(std::string name, int gain) 
 	: AbstractNode(name, gain)
 {
@@ -28,11 +29,14 @@ Pokemon::Pokemon(std::string name, int gain)
     //}
 }
 
+Pokemon::~Pokemon()
+{
+}
+#pragma endregion ConstructorDestructor
+
 std::string Pokemon::getNodeType() const
 {
 	return "pokemon";
 }
 
-Pokemon::~Pokemon()
-{
-}
+

@@ -1,7 +1,7 @@
 #include "Graph.h"
 
 
-
+#pragma region ConstructorDestructor
 Graph::Graph()
 {
 }
@@ -13,6 +13,23 @@ Graph::Graph(const Graph& toDuplicate)
 Graph::~Graph()
 {
 }
+#pragma endregion ConstructorDestructor
+
+#pragma region Get
+std::vector<std::shared_ptr<AbstractNode>> Graph::getNodeVector() const
+{
+	return NodeVector_;
+}
+
+std::shared_ptr<AbstractNode> Graph::getNode(std::string key) const
+{
+	for (auto aNode : NodeVector_)
+	{
+		if (key == aNode->getName()) return aNode;
+	}
+	return nullptr;
+}
+#pragma endregion Get
 
 //void Graph::addNode(std::string name, std::string type, int gain)
 //{
@@ -43,19 +60,4 @@ bool Graph::isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const{
 			return true;
 	}
 	return false;
-}
-
-
-std::vector<std::shared_ptr<AbstractNode>> Graph::getNodeVector() const
-{
-	return NodeVector_;
-}
-
-std::shared_ptr<AbstractNode> Graph::getNode(std::string key) const
-{
-	for(auto aNode : NodeVector_)
-	{
-		if (key == aNode->getName()) return aNode;
-	}
-	return nullptr;
 }

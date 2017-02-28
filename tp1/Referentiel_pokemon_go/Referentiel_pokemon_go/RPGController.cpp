@@ -12,7 +12,7 @@
 #include "Arena.h"
 #include "Pokestop.h"
 
-
+#pragma region ConstructorDestructor
 RPGController::RPGController()
 {
 	theGraph_ = nullptr;
@@ -22,6 +22,7 @@ RPGController::RPGController()
 RPGController::~RPGController()
 {
 }
+#pragma endregion ConstructorDestructor
 
 void RPGController::creerGraphe(std::string fileName)
 {

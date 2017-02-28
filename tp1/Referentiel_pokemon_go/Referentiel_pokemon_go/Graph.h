@@ -8,8 +8,15 @@
 class Graph
 {
 public:
+	//! A default constructor
 	Graph();
+
+	//! A duplicate constructor
+	/*!
+	* \param toDuplicate : the Graph to copy
+	*/
 	Graph(const Graph& toDuplicate);
+	//! A default destructor
 	~Graph();
 
 	//! A function that adds a node given by pointer
@@ -43,6 +50,10 @@ public:
 	*/
 	std::shared_ptr<AbstractNode> getNode(std::string key) const;
 
+	//! A function that tells if an Edge exist
+	/*!
+	* \param edgeToSearch : The Edge we are looking for
+	*/
 	bool isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const;
 private:
 	std::vector<std::shared_ptr<AbstractNode>> NodeVector_;

@@ -5,11 +5,13 @@
 class RPGController
 {
 public:
+#pragma region ConstructorDestructor
 	//! A default constructor
 	RPGController();
 	//! A default destructor
 	~RPGController();
-	
+#pragma endregion ConstructorDestructor
+
     //! A function that creates a graph by reading a file.
     /*!
     * \param nomFichier : the file that we are going to extract the graph data from

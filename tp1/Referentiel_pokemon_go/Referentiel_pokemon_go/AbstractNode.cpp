@@ -4,6 +4,7 @@
 #include "Edge.h"
 #include <memory>
 
+#pragma region ConstructorDestructor
 AbstractNode::AbstractNode(){}
 
 AbstractNode::AbstractNode(std::string name, int gain)
@@ -11,7 +12,9 @@ AbstractNode::AbstractNode(std::string name, int gain)
 {}
 
 AbstractNode::~AbstractNode(){}
+#pragma endregion ConstructorDestructor
 
+#pragma region Set
 void AbstractNode::setGain(int gain) {
 	gain_ = gain;
 }
@@ -19,7 +22,9 @@ void AbstractNode::setGain(int gain) {
 void AbstractNode::setRespawnLength(int respawnLength) {
 	respawnLength_ = respawnLength;
 }
+#pragma endregion Set
 
+#pragma region Get
 int AbstractNode::getGain() const {
 	return gain_;
 }
@@ -35,6 +40,13 @@ unsigned int AbstractNode::getEdgeQuantity() const {
 std::vector<std::shared_ptr<Edge>> AbstractNode::getEdges() const{
     return edgeVector_;
 }
+
+std::string AbstractNode::getName() const
+{
+	return name_;
+}
+
+#pragma endregion Get
 
 void AbstractNode::addEdge(std::shared_ptr<Edge> edge) {
 	edgeVector_.push_back(edge);
@@ -58,11 +70,6 @@ void AbstractNode::printNode() const
 		isFirstElement = false;
 	}
 	std::cout << ")" << std::endl;
-}
-
-std::string AbstractNode::getName() const
-{
-	return name_;
 }
 
 bool AbstractNode::isActive() const

@@ -137,6 +137,8 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	}
 
 	std::cout << path;
+
+	// Implémenter en Dijsktra.
 }
 
 void RPGController::plusGrandGain(Node* startingNode, unsigned int maximumLength)

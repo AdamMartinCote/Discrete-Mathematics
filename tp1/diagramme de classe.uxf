@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>792</x>
       <y>279</y>
       <w>243</w>
       <h>72</h>
@@ -19,7 +19,7 @@ double length_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>441</x>
       <y>279</y>
       <w>234</w>
       <h>117</h>
@@ -37,7 +37,7 @@ vector&lt;shared_ptr&lt;Edge&gt;&gt; edgeVector_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>648</x>
+      <x>639</x>
       <y>144</y>
       <w>279</w>
       <h>63</h>
@@ -51,7 +51,7 @@ vector&lt;shared_ptr&lt;Edge&gt;&gt; EdgeVector_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>702</x>
+      <x>693</x>
       <y>486</y>
       <w>234</w>
       <h>45</h>
@@ -63,7 +63,7 @@ vector&lt;shared_ptr&lt;Edge&gt;&gt; EdgeVector_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>441</x>
       <y>486</y>
       <w>234</w>
       <h>45</h>
@@ -76,7 +76,7 @@ PokemonType typePokemon_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
+      <x>189</x>
       <y>486</y>
       <w>234</w>
       <h>45</h>
@@ -88,29 +88,20 @@ PokemonType typePokemon_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>558</x>
       <y>198</y>
-      <w>243</w>
+      <w>180</w>
       <h>99</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;50.0;250.0;50.0;250.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1..n
+</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;50.0;180.0;50.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>783</x>
-      <y>234</y>
-      <w>180</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>180.0;50.0;180.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>558</x>
+      <x>549</x>
       <y>387</y>
       <w>27</w>
       <h>117</h>
@@ -121,7 +112,7 @@ PokemonType typePokemon_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
+      <x>297</x>
       <y>423</y>
       <w>198</w>
       <h>81</h>
@@ -132,7 +123,7 @@ PokemonType typePokemon_</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>477</x>
+      <x>468</x>
       <y>423</y>
       <w>369</w>
       <h>81</h>
@@ -143,7 +134,7 @@ PokemonType typePokemon_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
+      <x>954</x>
       <y>144</y>
       <w>315</w>
       <h>63</h>
@@ -157,7 +148,7 @@ vector&lt;shared_ptr&lt;AbstractNode&gt;&gt; arenas_</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>333</x>
       <y>144</y>
       <w>279</w>
       <h>63</h>
@@ -166,5 +157,42 @@ vector&lt;shared_ptr&lt;AbstractNode&gt;&gt; arenas_</panel_attributes>
 --
 unique_ptr&lt;Graph&gt; theGraph_</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>198</y>
+      <w>162</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=0..n
+</panel_attributes>
+    <additional_attributes>140.0;90.0;140.0;50.0;10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>666</x>
+      <y>324</y>
+      <w>81</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=1, 2</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>324</y>
+      <w>90</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m2=0.. n</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

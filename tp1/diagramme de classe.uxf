@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>801</x>
+      <y>279</y>
+      <w>243</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>_object: Edge_
+--
+shared_ptr&lt;AbstractNode&gt; firstNode_
+shared_ptr&lt;AbstractNode&gt; secondNode_
+double length_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>279</y>
+      <w>234</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>_object: AbstractNode_
+--
+string name_
+NodeType nodeType_
+int gain_
+bool isActice_
+int respawnLength_
+vector&lt;shared_ptr&lt;Edge&gt;&gt; edgeVector_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>648</x>
+      <y>144</y>
+      <w>279</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>_object: Graph_
+--
+vector&lt;shared_ptr&lt;AbstractNode&gt;&gt; NodeVector_
+vector&lt;shared_ptr&lt;Edge&gt;&gt; EdgeVector_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>702</x>
+      <y>486</y>
+      <w>234</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>_object: Pokestop_
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>486</y>
+      <w>234</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>_object: Pokemon_
+--
+PokemonType typePokemon_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>198</x>
+      <y>486</y>
+      <w>234</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>_object: Arena_
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>567</x>
+      <y>198</y>
+      <w>243</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;10.0;50.0;250.0;50.0;250.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>783</x>
+      <y>234</y>
+      <w>180</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>180.0;50.0;180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>558</x>
+      <y>387</y>
+      <w>27</w>
+      <h>117</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>306</x>
+      <y>423</y>
+      <w>198</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>200.0;20.0;10.0;20.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>477</x>
+      <y>423</y>
+      <w>369</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;390.0;20.0;390.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>963</x>
+      <y>144</y>
+      <w>315</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>_object: NodeActivity_
+--
+vector&lt;pair&lt;shared_ptr&lt;AbstractNode&gt;, int&gt;&gt; nodes_
+vector&lt;shared_ptr&lt;AbstractNode&gt;&gt; arenas_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>342</x>
+      <y>144</y>
+      <w>279</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>_object: RPGController_
+--
+unique_ptr&lt;Graph&gt; theGraph_</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

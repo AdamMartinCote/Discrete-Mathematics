@@ -179,8 +179,6 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
 
 	std::string path = currentNode->getName();
 
-    
-    unsigned int bestGain = 0;
 	unsigned int distanceTraveled = 0;
 	unsigned int totalGain = 0;
     
@@ -188,6 +186,7 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
         currentNode = nextNode;
         nextNode = nullptr;
         for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++){
+			unsigned int bestGain = 0;
 			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
         
             if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
@@ -200,11 +199,12 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
             }
         }
 		if (nextNode != nullptr) {
-			path += "->" + currentNode->getName();
+			
 			tempGraph.addNode(nextNode);
 			tempGraph.addEdge(nextEdge);
 			distanceTraveled += nextEdge->getLength();
 			totalGain += nextNode->getGain();
+			path += "->" + nextNode->getName();
 			nodeActivity.setNodeToInactive(currentNode);
 			nodeActivity.activityController(nextEdge->getLength());
 		}
@@ -212,5 +212,5 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
     }
 	std::cout << path << std::endl;
 	std::cout << "Donne un gain de " << totalGain << std::endl;
-    //to continue...
+	nodeActivity.setArenaActive();
 }

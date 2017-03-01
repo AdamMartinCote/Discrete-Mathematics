@@ -25,6 +25,8 @@ public:
 	*/
 	void removePair(int index);
 
+	void setArenaActive();
+
 	//! A function that tells if an Edge exist
 	/*!
 	* \param length : The length travelled
@@ -32,5 +34,6 @@ public:
 	void activityController(int length);
 private:
 	std::vector<std::pair<std::shared_ptr<AbstractNode>, int>> nodes_;
+	std::vector<std::shared_ptr<AbstractNode>> arenas_;
 };
 

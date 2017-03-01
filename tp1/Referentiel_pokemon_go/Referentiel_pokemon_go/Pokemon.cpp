@@ -11,22 +11,18 @@
 Pokemon::Pokemon(std::string name, int gain) 
 	: AbstractNode(name, gain)
 {
-	if (gain >= GAIN_RARE_POKEMON) typePokemon_ = PokemonType::rare;
-	else if (gain >= GAIN_NORMAL_POKEMON) typePokemon_ = PokemonType::normal;
-	else typePokemon_ = PokemonType::frequent;
-
-    //if (typePokemon == "rare"){
-    //    setGain(GAIN_RARE_POKEMON);
-    //    setRespawnLength(LENGTH_RARE_RESPAWN);
-    //}
-    //else if (typePokemon == "normal"){
-    //    setGain(GAIN_NORMAL_POKEMON);
-    //    setRespawnLength(LENGTH_NORMAL_RESPAWN);
-    //}
-    //else if (typePokemon == "frequent"){
-    //    setGain(GAIN_FREQUENT_POKEMON);
-    //    setRespawnLength(LENGTH_FREQUENT_RESPAWN);
-    //}
+	if (gain >= GAIN_RARE_POKEMON) { 
+		typePokemon_ = PokemonType::rare; 
+		respawnLength_ = LENGTH_RARE_RESPAWN;
+	}
+	else if (gain >= GAIN_NORMAL_POKEMON) {
+		typePokemon_ = PokemonType::normal;
+		respawnLength_ = LENGTH_NORMAL_RESPAWN;
+	}
+	else {
+		typePokemon_ = PokemonType::frequent;
+		respawnLength_ = LENGTH_FREQUENT_RESPAWN;
+	}
 }
 
 Pokemon::~Pokemon()

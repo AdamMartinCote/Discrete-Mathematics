@@ -117,50 +117,7 @@ std::string RPGController::plusCourtChemin(std::string startKeyNode, unsigned in
 	return PathSearcher::ObtainShortestPath(theGraph_, theGraph_->getNode(startKeyNode), gainWanted);
 }
 
-void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
+std::string RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
 {
-	auto currentNode = theGraph_->getNode(startKeyNode);
-	std::shared_ptr<AbstractNode> nextNode = currentNode;
-	std::shared_ptr<Edge> nextEdge = nullptr;
-	NodeActivity nodeActivity;
-
-	Graph tempGraph;
-	tempGraph.addNode(currentNode);
-
-	std::string path = currentNode->getName();
-
-	unsigned int distanceTraveled = 0;
-	unsigned int totalGain = 0;
-
-	while (nextNode != nullptr) {
-		currentNode = nextNode;
-		nextNode = nullptr;
-		for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++) {
-			unsigned int bestGain = 0;
-			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
-
-			if (distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
-				otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain &&
-				otherNode->isActive())
-			{
-				nextNode = otherNode;
-				nextEdge = currentNode->getEdges()[i];
-				bestGain = nextNode->getGain() / nextEdge->getLength();
-			}
-		}
-		if (nextNode != nullptr) {
-
-			tempGraph.addNode(nextNode);
-			tempGraph.addEdge(nextEdge);
-			distanceTraveled += nextEdge->getLength();
-			totalGain += nextNode->getGain();
-			path += "->" + nextNode->getName();
-			nodeActivity.setNodeToInactive(currentNode);
-			nodeActivity.inactiveNodesManager(nextEdge->getLength());
-		}
-
-	}
-	std::cout << path << std::endl;
-	std::cout << "Donne un gain de " << totalGain << std::endl;
-	nodeActivity.reset();
+	return PathSearcher::ObtainBiggestGain(theGraph_, theGraph_->getNode(startKeyNode), maximumLength);
 }

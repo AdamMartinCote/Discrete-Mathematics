@@ -51,7 +51,7 @@ int main()
 			std::cout <<
 				"Entrer la distance maximale à parcourir:\n";
 			std::cin >> maximumLength;
-			rpgController.plusGrandGain(nodeName, maximumLength);
+			std::cout << rpgController.plusGrandGain(nodeName, maximumLength) << std::endl;
 			break;
 		default:
 			break;

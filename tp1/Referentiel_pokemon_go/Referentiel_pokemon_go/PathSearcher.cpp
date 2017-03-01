@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 
 #include "PathSearcher.h"
@@ -103,9 +104,51 @@ std::string PathSearcher::ObtainShortestPathWithoutDisjktra(std::shared_ptr<Grap
 	return path;
 }
 
-std::string PathSearcher::ObtainBiggestGain()
+std::string PathSearcher::ObtainBiggestGain(std::shared_ptr<Graph> theGraph_, std::shared_ptr<AbstractNode> startNode, unsigned int maximumLength)
 {
-	return "";
+	auto currentNode = startNode;
+	std::shared_ptr<AbstractNode> nextNode = currentNode;
+	std::shared_ptr<Edge> nextEdge = nullptr;
+	NodeActivity nodeActivity;
+
+	Graph tempGraph;
+	tempGraph.addNode(currentNode);
+
+	std::string path = currentNode->getName();
+
+	unsigned int distanceTraveled = 0;
+	unsigned int totalGain = 0;
+
+	while (nextNode != nullptr) {
+		currentNode = nextNode;
+		nextNode = nullptr;
+		for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++) {
+			unsigned int bestGain = 0;
+			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
+
+			if (distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
+				otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain &&
+				otherNode->isActive())
+			{
+				nextNode = otherNode;
+				nextEdge = currentNode->getEdges()[i];
+				bestGain = nextNode->getGain() / nextEdge->getLength();
+			}
+		}
+		if (nextNode != nullptr) {
+
+			tempGraph.addNode(nextNode);
+			tempGraph.addEdge(nextEdge);
+			distanceTraveled += nextEdge->getLength();
+			totalGain += nextNode->getGain();
+			path += "->" + nextNode->getName();
+			nodeActivity.setNodeToInactive(currentNode);
+			nodeActivity.inactiveNodesManager(nextEdge->getLength());
+		}
+
+	}
+	nodeActivity.reset();
+	return path;
 }
 #pragma endregion ConstructorDestructor
 

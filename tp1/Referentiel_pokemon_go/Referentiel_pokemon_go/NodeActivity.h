@@ -25,6 +25,7 @@ public:
 	*/
 	void removePair(int index);
 
+	//! A function that set every nodes 
 	void reset();
 
 	//! A function that tells if an Edge exist

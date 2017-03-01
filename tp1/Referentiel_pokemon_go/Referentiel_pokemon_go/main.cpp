@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <clocale>
+#include <stdexcept>
 #include "RPGController.h"
 
 int main()
@@ -49,6 +50,7 @@ int main()
 			std::cin >> nodeName;
 			std::cout <<
 				"Entrer la distance maximale à parcourir:\n";
+			std::cin >> maximumLength;
 			std::cin >> maximumLength;
 			rpgController.plusGrandGain(nodeName, maximumLength);
 			break;

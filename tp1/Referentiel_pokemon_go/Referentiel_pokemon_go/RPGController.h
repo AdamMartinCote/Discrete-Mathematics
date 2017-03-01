@@ -33,7 +33,7 @@ public:
     * \param node : the first node that we know that is attached to the edge. 
     * \result : The other node of the current edge.
     */
-	void plusGrandGain(std::shared_ptr<AbstractNode> startingNode, unsigned int maximumLength) const;
+	void plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const;
 
 private:
 	std::unique_ptr<Graph> theGraph_;

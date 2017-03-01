@@ -11,6 +11,7 @@
 #include "Pokemon.h"
 #include "Arena.h"
 #include "Pokestop.h"
+#include "NodeActivity.h"
 
 #pragma region ConstructorDestructor
 RPGController::RPGController()
@@ -166,14 +167,22 @@ void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainW
 	std::cout << path << std::endl;
 }
 
-void RPGController::plusGrandGain(std::shared_ptr<AbstractNode> startingNode, unsigned int maximumLength) const
+void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
 {
-    unsigned int distanceTraveled = 0;
-    unsigned int totalGain;
-	std::shared_ptr<AbstractNode> currentNode = startingNode;
-	std::shared_ptr<AbstractNode> nextNode = startingNode;
+    auto currentNode = theGraph_->getNode(startKeyNode);
+	std::shared_ptr<AbstractNode> nextNode = currentNode;
+	std::shared_ptr<Edge> nextEdge = nullptr;
+	NodeActivity nodeActivity;
+
+	Graph tempGraph;
+	tempGraph.addNode(currentNode);
+
+	std::string path = currentNode->getName();
+
     
     unsigned int bestGain = 0;
+	unsigned int distanceTraveled = 0;
+	unsigned int totalGain = 0;
     
     while(nextNode!= nullptr){
         currentNode = nextNode;
@@ -182,13 +191,26 @@ void RPGController::plusGrandGain(std::shared_ptr<AbstractNode> startingNode, un
 			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
         
             if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
-                otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain){
-                bestGain = otherNode->getGain();
+                otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain && 
+				otherNode->isActive())
+			{
                 nextNode = otherNode;
+				nextEdge = currentNode->getEdges()[i];
+				bestGain = nextNode->getGain() / nextEdge->getLength();
             }
         }
-        std::cout << std::endl;
+		if (nextNode != nullptr) {
+			path += "->" + currentNode->getName();
+			tempGraph.addNode(nextNode);
+			tempGraph.addEdge(nextEdge);
+			distanceTraveled += nextEdge->getLength();
+			totalGain += nextNode->getGain();
+			nodeActivity.setNodeToInactive(currentNode);
+			nodeActivity.activityController(nextEdge->getLength());
+		}
+		
     }
-    
+	std::cout << path << std::endl;
+	std::cout << "Donne un gain de " << totalGain << std::endl;
     //to continue...
 }

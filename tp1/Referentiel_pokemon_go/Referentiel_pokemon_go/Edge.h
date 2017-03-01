@@ -6,6 +6,7 @@
 class Edge
 {
 public:
+#pragma region ConstructorDestructor
 	//! A parametrized constructor for the Edge class
 	/*!
 	* \param node1 : the first node
@@ -15,7 +16,9 @@ public:
 	Edge::Edge(std::shared_ptr<AbstractNode> node1, std::shared_ptr<AbstractNode> node2, double length);
 	//! A default destructor
 	~Edge();
-    
+#pragma endregion ConstructorDestructor
+	
+#pragma region Set
 	//! Sets the first Node
 	/*!
 	* \param node : The Node to set for the firstNode_ attribute
@@ -31,7 +34,9 @@ public:
 	* \param length : The length to set for the length_ attribute
 	*/
     void setLength(double length);
-    
+#pragma endregion Set
+
+#pragma region Get
 	//! Get the first node
 	/*!
 	* \result : The first node
@@ -47,6 +52,7 @@ public:
 	* \result : The length of the Edge
 	*/
     double getLength() const;
+#pragma endregion Get
 
 	//! A function to find the other Node attached to the current Edge
 	/*!

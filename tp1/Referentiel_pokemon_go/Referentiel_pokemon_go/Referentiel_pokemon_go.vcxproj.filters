@@ -43,7 +43,7 @@
       <Filter>Source Files\models</Filter>
     </ClCompile>
     <ClCompile Include="NodeActivity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\models</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

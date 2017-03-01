@@ -1,7 +1,7 @@
 #include "NodeActivity.h"
 
 
-
+#pragma region ConstructorDestructor
 NodeActivity::NodeActivity()
 {
 }
@@ -10,6 +10,7 @@ NodeActivity::NodeActivity()
 NodeActivity::~NodeActivity()
 {
 }
+#pragma endregion ConstructorDestructor
 
 void NodeActivity::setNodeToInactive(std::shared_ptr<AbstractNode> node)
 {
@@ -28,9 +29,9 @@ void NodeActivity::removePair(int index) {
 void NodeActivity::activityController(int length) {
 	for (int i = 0; i < nodes_.size(); i++) {
 		nodes_[i].second -= length;
-		while (nodes_[i].second <= 0) {
-			nodes_[i].first->setToActive();
+		if (nodes_[i].second <= 0) {
 			removePair(i);
+			i--;
 		}
 	}
 }

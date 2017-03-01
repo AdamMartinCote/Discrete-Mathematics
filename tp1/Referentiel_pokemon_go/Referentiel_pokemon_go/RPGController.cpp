@@ -112,9 +112,9 @@ void RPGController::lireGraphe() const
 	std::cout << std::endl;
 }
 
-void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
+std::string RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
 {
-	std::cout << PathSearcher::ObtainShortestPathWithoutDisjktra(theGraph_, startKeyNode, gainWanted);
+	return PathSearcher::ObtainShortestPath(theGraph_, theGraph_->getNode(startKeyNode), gainWanted);
 }
 
 void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const

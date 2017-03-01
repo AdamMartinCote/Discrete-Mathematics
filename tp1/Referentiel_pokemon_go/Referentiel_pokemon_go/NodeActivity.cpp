@@ -12,6 +12,16 @@ NodeActivity::~NodeActivity()
 }
 #pragma endregion ConstructorDestructor
 
+void NodeActivity::activityController(int length) {
+	for (int i = 0; i < nodes_.size(); i++) {
+		nodes_[i].second -= length;
+		if (nodes_[i].second <= 0) {
+			removePair(i);
+			i--;
+		}
+	}
+}
+
 void NodeActivity::setNodeToInactive(std::shared_ptr<AbstractNode> node)
 {
 	if (node->getNodeType() != "arene") {
@@ -37,14 +47,4 @@ void NodeActivity::reset() {
 
 	for (int i = 0; i < nodes_.size(); i++)
 		nodes_[i].first->setToActive();
-}
-
-void NodeActivity::activityController(int length) {
-	for (int i = 0; i < nodes_.size(); i++) {
-		nodes_[i].second -= length;
-		if (nodes_[i].second <= 0) {
-			removePair(i);
-			i--;
-		}
-	}
 }

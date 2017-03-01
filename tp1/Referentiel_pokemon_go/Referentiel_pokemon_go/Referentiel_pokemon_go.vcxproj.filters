@@ -16,6 +16,9 @@
     <Filter Include="Source Files\models">
       <UniqueIdentifier>{b4540cc0-d500-40e0-b93d-d99829d68c39}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\util">
+      <UniqueIdentifier>{0d236776-64dd-4684-8926-323b67dcd991}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,9 @@
     <ClCompile Include="NodeActivity.cpp">
       <Filter>Source Files\models</Filter>
     </ClCompile>
+    <ClCompile Include="PathSearcher.cpp">
+      <Filter>Source Files\util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokestop.h">
@@ -72,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="NodeActivity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PathSearcher.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

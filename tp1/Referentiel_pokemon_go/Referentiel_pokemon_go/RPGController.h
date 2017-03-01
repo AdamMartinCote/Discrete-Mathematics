@@ -2,6 +2,21 @@
 #include "Graph.h"
 #include <memory>
 
+
+#include <fstream>
+#include <string>
+#include <sstream>
+
+#include "RPGController.h"
+#include "AbstractNode.h"
+#include "Edge.h"
+#include <iostream>
+#include "Pokemon.h"
+#include "Arena.h"
+#include "Pokestop.h"
+#include "NodeActivity.h"
+#include "PathSearcher.h"
+
 class RPGController
 {
 public:
@@ -36,6 +51,6 @@ public:
 	void plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const;
 
 private:
-	std::unique_ptr<Graph> theGraph_;
+	std::shared_ptr<Graph> theGraph_;
 };
 

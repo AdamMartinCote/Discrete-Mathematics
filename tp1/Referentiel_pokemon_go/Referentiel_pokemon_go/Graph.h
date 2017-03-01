@@ -25,9 +25,9 @@ public:
 	*/
 	void addNode(std::shared_ptr<AbstractNode> nodeToAdd);
 
-	//! A function that creates and add a node
+	//! A function that creates a complete edge.
 	/*!
-	* \param name, type, gain
+	* \param ptrToNode1, ptrToNode2, length
 	*/
 	std::shared_ptr<Edge> addEdge
 	(std::shared_ptr<AbstractNode> ptrToNode1, std::shared_ptr<AbstractNode> ptrToNode2, double length);
@@ -40,7 +40,7 @@ public:
 
 	//! A function that return the whole node vector
 	/*!
-	* \param nodeToAdd : pointer to the node to be added
+	* \param none
 	*/
 	std::vector<std::shared_ptr<AbstractNode>> getNodeVector() const;
 

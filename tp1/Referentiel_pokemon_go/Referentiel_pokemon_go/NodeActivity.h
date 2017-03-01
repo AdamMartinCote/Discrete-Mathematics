@@ -13,6 +13,12 @@ public:
 	~NodeActivity();
 #pragma endregion ConstructorDestructor
 
+	//! A function that control the action on this class.
+	/*!
+	* \param length : The length travelled
+	*/
+	void activityController(int length);
+
 	//! A function that set to Inactive a node
 	/*!
 	* \param node : The node to make inactive
@@ -28,11 +34,6 @@ public:
 	//! A function that set every nodes 
 	void reset();
 
-	//! A function that tells if an Edge exist
-	/*!
-	* \param length : The length travelled
-	*/
-	void activityController(int length);
 private:
 	std::vector<std::pair<std::shared_ptr<AbstractNode>, int>> nodes_;
 	std::vector<std::shared_ptr<AbstractNode>> arenas_;

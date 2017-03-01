@@ -1,17 +1,6 @@
 #pragma once
 
-#include <fstream>
-#include <string>
-#include <sstream>
-
 #include "RPGController.h"
-#include "AbstractNode.h"
-#include "Edge.h"
-#include <iostream>
-#include "Pokemon.h"
-#include "Arena.h"
-#include "Pokestop.h"
-#include "NodeActivity.h"
 
 #pragma region ConstructorDestructor
 RPGController::RPGController()
@@ -37,7 +26,7 @@ void RPGController::creerGraphe(std::string fileName)
 
 		std::string line, item, field;
 
-		//get first line (nodes)
+		//get first line (nodes)2
 		std::getline(inputFile, line);
 
 		std::stringstream node_line_stream(line);
@@ -57,17 +46,17 @@ void RPGController::creerGraphe(std::string fileName)
 			item_stream >> gain;
 
 			// identify Node type
-			if(nodeType == "pokemon")
+			if (nodeType == "pokemon")
 			{
 				std::shared_ptr<Pokemon> nodeToAdd = std::make_shared<Pokemon>(name, gain);
 				theGraph_->addNode(nodeToAdd);
 			}
-			else if(nodeType == "arene")
+			else if (nodeType == "arene")
 			{
 				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
 				theGraph_->addNode(nodeToAdd);
 			}
-			else if(nodeType == "pokestop")
+			else if (nodeType == "pokestop")
 			{
 				std::shared_ptr<Pokestop> nodeToAdd = std::make_shared<Pokestop>(name, gain);
 				theGraph_->addNode(nodeToAdd);
@@ -79,34 +68,34 @@ void RPGController::creerGraphe(std::string fileName)
 			}
 
 		}
-		
+
 		//get second line (edges)
 		std::getline(inputFile, line);
 
-			std::stringstream edge_line_stream(line);
+		std::stringstream edge_line_stream(line);
 
-			//parse edges
-			while (std::getline(edge_line_stream, item, ';'))
-			{
-				std::stringstream item_stream(item);
+		//parse edges
+		while (std::getline(edge_line_stream, item, ';'))
+		{
+			std::stringstream item_stream(item);
 
-				std::string node1;
-				std::string node2;
-				int distance;
+			std::string node1;
+			std::string node2;
+			int distance;
 
-				std::getline(item_stream, node1, ',');
-				std::getline(item_stream, node2, ',');
-				item_stream >> distance;
+			std::getline(item_stream, node1, ',');
+			std::getline(item_stream, node2, ',');
+			item_stream >> distance;
 
-				std::shared_ptr<AbstractNode> ptrToNode1 = theGraph_->getNode(node1);
-				std::shared_ptr<AbstractNode> ptrToNode2 = theGraph_->getNode(node2);
+			std::shared_ptr<AbstractNode> ptrToNode1 = theGraph_->getNode(node1);
+			std::shared_ptr<AbstractNode> ptrToNode2 = theGraph_->getNode(node2);
 
-				// add the 2 potential node pointers to the new edge
-				std::shared_ptr<Edge> ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
+			// add the 2 potential node pointers to the new edge
+			std::shared_ptr<Edge> ptrEdge = theGraph_->addEdge(ptrToNode1, ptrToNode2, distance);
 
-				ptrToNode1->addEdge(ptrEdge);
-				ptrToNode2->addEdge(ptrEdge);
-			}
+			ptrToNode1->addEdge(ptrEdge);
+			ptrToNode2->addEdge(ptrEdge);
+		}
 	}
 	else std::cout << "files failed to open" << std::endl;
 }
@@ -125,53 +114,12 @@ void RPGController::lireGraphe() const
 
 void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
 {
-
-	std::string path = "";
-	unsigned int actualGain = 0;
-	Graph tempGraph;
-
-	auto currentNode = theGraph_->getNode(startKeyNode);
-	auto currentEdges = currentNode->getEdges();
-
-	tempGraph.addNode(currentNode);
-	actualGain += currentNode->getGain();
-
-	path += currentNode->getName();
-
-	while (actualGain < gainWanted)
-	{
-		std::shared_ptr<Edge> shortestEdge = nullptr;
-		
-		for (std::shared_ptr<Edge> edge : currentEdges)
-		{
-			if (tempGraph.isEdgeFound(edge))
-				continue;
-			if(shortestEdge == nullptr)
-				shortestEdge = edge;
-			else if (
-					(edge->getLength() < shortestEdge->getLength()) &&	
-					(shortestEdge->getOtherNode(currentNode)->isActive())					
-					)
-				shortestEdge = edge;
-		}
-
-		currentNode = shortestEdge->getOtherNode(currentNode);
-		path += "->" + currentNode->getName();
-
-		tempGraph.addNode(shortestEdge->getOtherNode(currentNode));
-		tempGraph.addEdge(shortestEdge);
-		actualGain += currentNode->getGain();
-		currentEdges = currentNode->getEdges();
-	}
-
-	std::cout << path;
-
-	// Implémenter en Dijsktra.
+	std::cout << PathSearcher::ObtainShortestPathWithoutDisjktra(theGraph_, startKeyNode, gainWanted);
 }
 
 void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
 {
-    auto currentNode = theGraph_->getNode(startKeyNode);
+	auto currentNode = theGraph_->getNode(startKeyNode);
 	std::shared_ptr<AbstractNode> nextNode = currentNode;
 	std::shared_ptr<Edge> nextEdge = nullptr;
 	NodeActivity nodeActivity;
@@ -183,25 +131,25 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
 
 	unsigned int distanceTraveled = 0;
 	unsigned int totalGain = 0;
-    
-    while(nextNode!= nullptr){
-        currentNode = nextNode;
-        nextNode = nullptr;
-        for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++){
+
+	while (nextNode != nullptr) {
+		currentNode = nextNode;
+		nextNode = nullptr;
+		for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++) {
 			unsigned int bestGain = 0;
 			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
-        
-            if(distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
-                otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain && 
+
+			if (distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
+				otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain &&
 				otherNode->isActive())
 			{
-                nextNode = otherNode;
+				nextNode = otherNode;
 				nextEdge = currentNode->getEdges()[i];
 				bestGain = nextNode->getGain() / nextEdge->getLength();
-            }
-        }
+			}
+		}
 		if (nextNode != nullptr) {
-			
+
 			tempGraph.addNode(nextNode);
 			tempGraph.addEdge(nextEdge);
 			distanceTraveled += nextEdge->getLength();
@@ -210,8 +158,8 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
 			nodeActivity.setNodeToInactive(currentNode);
 			nodeActivity.activityController(nextEdge->getLength());
 		}
-		
-    }
+
+	}
 	std::cout << path << std::endl;
 	std::cout << "Donne un gain de " << totalGain << std::endl;
 	nodeActivity.reset();

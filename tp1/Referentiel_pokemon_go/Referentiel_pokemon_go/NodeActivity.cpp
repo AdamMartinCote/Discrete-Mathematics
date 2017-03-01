@@ -12,7 +12,7 @@ NodeActivity::~NodeActivity()
 }
 #pragma endregion ConstructorDestructor
 
-void NodeActivity::activityController(int length) {
+void NodeActivity::inactiveNodesManager(int length) {
 	for (int i = 0; i < nodes_.size(); i++) {
 		nodes_[i].second -= length;
 		if (nodes_[i].second <= 0) {

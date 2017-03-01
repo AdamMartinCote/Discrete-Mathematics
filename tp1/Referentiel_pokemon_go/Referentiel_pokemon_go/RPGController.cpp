@@ -156,7 +156,7 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
 			totalGain += nextNode->getGain();
 			path += "->" + nextNode->getName();
 			nodeActivity.setNodeToInactive(currentNode);
-			nodeActivity.activityController(nextEdge->getLength());
+			nodeActivity.inactiveNodesManager(nextEdge->getLength());
 		}
 
 	}

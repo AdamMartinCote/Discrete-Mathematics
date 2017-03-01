@@ -13,11 +13,11 @@ public:
 	~NodeActivity();
 #pragma endregion ConstructorDestructor
 
-	//! A function that control the action on this class.
+	//! A function that manage the inactive nodes to set them to active when ready
 	/*!
 	* \param length : The length travelled
 	*/
-	void activityController(int length);
+	void inactiveNodesManager(int length);
 
 	//! A function that set to Inactive a node
 	/*!
@@ -31,7 +31,7 @@ public:
 	*/
 	void removePair(int index);
 
-	//! A function that set every nodes 
+	//! A function that reset every nodes 
 	void reset();
 
 private:

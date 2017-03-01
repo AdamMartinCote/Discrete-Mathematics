@@ -212,5 +212,5 @@ void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximum
     }
 	std::cout << path << std::endl;
 	std::cout << "Donne un gain de " << totalGain << std::endl;
-	nodeActivity.setArenaActive();
+	nodeActivity.reset();
 }

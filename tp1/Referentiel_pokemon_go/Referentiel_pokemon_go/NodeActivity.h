@@ -25,7 +25,7 @@ public:
 	*/
 	void removePair(int index);
 
-	void setArenaActive();
+	void reset();
 
 	//! A function that tells if an Edge exist
 	/*!

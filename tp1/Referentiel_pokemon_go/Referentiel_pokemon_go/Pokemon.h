@@ -1,13 +1,29 @@
 #pragma once
-#include "Node.h"
 #include <string>
+#include "AbstractNode.h"
 
-class Pokemon : public Node
+enum class PokemonType { rare, normal, frequent };
+
+class Pokemon : public AbstractNode
 {
 public:
-	Pokemon(std::string typePokemon);
+#pragma region ConstructorDestructor
+	//! A parametrized constructor
+	/*!
+	* \param name : The name of the Pokemon
+	* \param gain : The gain of the Pokemon
+	*/
+	Pokemon(std::string name, int gain);
+	//! A default destructor
 	~Pokemon();
+#pragma endregion ConstructorDestructor
+
+	//! Get the Node type
+	/*!
+	* \result : The type if the node
+	*/
+	virtual std::string getNodeType() const override;
 private:
-	std::string typePokemon_;
+	PokemonType typePokemon_;
 };
 

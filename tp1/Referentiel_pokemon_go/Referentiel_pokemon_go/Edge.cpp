@@ -1,48 +1,46 @@
 #include "Edge.h"
-#include "Node.h"
+#include <iostream>
 
-
-
-Edge::Edge(Node * node1, Node * node2, double length)
+#pragma region ConstructorDestructor
+Edge::Edge(std::shared_ptr<AbstractNode> node1, std::shared_ptr<AbstractNode> node2, double length)
 	:firstNode_(node1), secondNode_(node2), length_(length)
 {
 }
 
-
 Edge::~Edge()
 {
 }
+#pragma endregion ConstructorDestructor
 
-void Edge::setFirstNode(Node* node){
+#pragma region Set
+void Edge::setFirstNode(std::shared_ptr<AbstractNode> node){
     firstNode_ = node;
 }
 
-void Edge::setSecondNode(Node* node){
+void Edge::setSecondNode(std::shared_ptr<AbstractNode> node){
     secondNode_ = node;
 }
 
 void Edge::setLength(double length){
     length_ = length;
 }
+#pragma endregion Set
 
-Node* Edge::getFirstNode(){
+#pragma region Get
+std::shared_ptr<AbstractNode> Edge::getFirstNode()const{
     return firstNode_;
 }
 
-Node* Edge::getSecondNode(){
+std::shared_ptr<AbstractNode> Edge::getSecondNode()const{
     return secondNode_;
 }
 
-double Edge::getLength(){
+double Edge::getLength()const {
     return length_;
 }
+#pragma endregion Get
 
-//! A function to find the other Node attached to the current Edge
-/*!
- * \param node : the first node that we know that is attached to the edge. 
- * \result : The other node of the current edge.
- */
-Node* Edge::getOtherNode(const Node* node){
+std::shared_ptr<AbstractNode> Edge::getOtherNode(const std::shared_ptr<AbstractNode> node) const{
     if (node == firstNode_)
         return secondNode_;
     else if (node == secondNode_){
@@ -50,3 +48,5 @@ Node* Edge::getOtherNode(const Node* node){
     }
     else return nullptr;
 }
+
+

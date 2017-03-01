@@ -150,7 +150,8 @@
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="AbstractNode.cpp" />
+    <ClCompile Include="NodeActivity.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="Pokestop.cpp" />
     <ClCompile Include="RPGController.cpp" />
@@ -159,10 +160,15 @@
     <ClInclude Include="Arena.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
-    <ClInclude Include="Node.h" />
+    <ClInclude Include="AbstractNode.h" />
+    <ClInclude Include="NodeActivity.h" />
+    <ClInclude Include="NodeType.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="Pokestop.h" />
     <ClInclude Include="RPGController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

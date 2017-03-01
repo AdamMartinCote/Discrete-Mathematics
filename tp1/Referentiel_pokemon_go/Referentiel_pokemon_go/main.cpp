@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include <clocale>
+#include <stdexcept>
 #include "RPGController.h"
 
 int main()
@@ -8,6 +10,7 @@ int main()
 	char input = 'z';
 	std::string nodeName;
 	unsigned int wantedGain;
+	unsigned int maximumLength;
 
 
 	// Creation du graphe unique � partir du txt
@@ -42,6 +45,14 @@ int main()
 			break;
 		case 'c':
 			//rpgController.plusGrandGain();
+			std::cout << 
+				"Entrer le noeud où débuter:\n";
+			std::cin >> nodeName;
+			std::cout <<
+				"Entrer la distance maximale à parcourir:\n";
+			std::cin >> maximumLength;
+			std::cin >> maximumLength;
+			rpgController.plusGrandGain(nodeName, maximumLength);
 			break;
 		default:
 			break;
@@ -49,5 +60,5 @@ int main()
 		}
 
 	}
-
+	return 0;
 }

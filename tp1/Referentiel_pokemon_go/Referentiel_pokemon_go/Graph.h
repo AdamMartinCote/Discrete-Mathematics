@@ -28,6 +28,8 @@ public:
 	*/
 	bool isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const;
 
+	bool isNodeFound(std::shared_ptr<AbstractNode> nodeToSearch) const;
+
 	//! A function that return the shortest road based on a given gain.
 	/*!
 	* \param gain : The gain that we are looking for.

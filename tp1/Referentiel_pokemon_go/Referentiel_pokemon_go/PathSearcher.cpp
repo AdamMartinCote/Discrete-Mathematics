@@ -20,7 +20,7 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 	std::string path;
 	unsigned int actualGain = 0;
 
-	std::shared_ptr<Graph> tempGraph;
+	std::shared_ptr<Graph> tempGraph = std::make_shared<Graph>();
 	tempGraph->addNode(startNode);
 
 	// Rendre infinit tous les chemins en terme de distances.
@@ -30,17 +30,22 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 	std::shared_ptr<AbstractNode> otherNode;
 	std::shared_ptr<Road> shortestPath;
 	std::shared_ptr<AbstractNode> choosedNode;
+	std::shared_ptr<AbstractNode> tempNode;
 
 
 	// Tant que nous n'avon pas le gain désiré
 	while (actualGain < gainWanted)
 	{
+		shortestEdge = nullptr;
 
 		// Pour tous les noeuds choisis
 		for (std::shared_ptr<AbstractNode> currentNode : tempGraph->getNodeVector())
 		{
-			shortestNodeEdge = NextshortestEdge(currentNode, tempGraph->getNodeVector());
-			if (shortestEdge->getLength() > shortestNodeEdge->getLength()) {
+			shortestNodeEdge = NextshortestNewEdge(currentNode, tempGraph);
+
+			if ((shortestEdge == nullptr) ||
+				(shortestEdge->getLength() > shortestNodeEdge->getLength()))
+			{
 				shortestEdge = shortestNodeEdge;
 				choosedNode = currentNode;
 			}
@@ -50,8 +55,8 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 		tempGraph->addNode(shortestEdge->getOtherNode(choosedNode));
 
 		// Case of the first loop. We are at the root so there's no road created.
-		if(shortestEdge->contains(startNode))
-		{			
+		if (shortestEdge->contains(startNode))
+		{
 			otherNode = shortestEdge->getOtherNode(startNode);
 			shortestPath = std::make_shared<Road>(startNode, otherNode, otherNode->getGain(), shortestEdge->getLength());
 			tempGraph->addRoad(shortestPath);
@@ -60,21 +65,70 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 		{
 			otherNode = shortestEdge->getOtherNode(choosedNode);
 			shortestPath = tempGraph->getRoad(choosedNode);
-			shortestPath->extendTo(otherNode, shortestEdge->getLength());
-			actualGain = shortestPath->GetTotalGain();
+
+			// We choose an edge who have a node between a start and end node of a road.
+			if (shortestPath == nullptr)
+			{
+				int lastEdgeLength = 0;
+				bool isRoadConnectedToStartNode = false;
+
+				// Search the end node of the road.
+				for (std::shared_ptr<Edge> currentEdge : choosedNode->getEdges())
+				{
+					tempNode = currentEdge->getOtherNode(choosedNode);
+					if ((currentEdge != shortestEdge) &&
+						tempGraph->isNodeFound(tempNode) &&
+						tempGraph->getRoad(tempNode) != nullptr)
+					{
+						isRoadConnectedToStartNode = true;
+						lastEdgeLength = currentEdge->getLength();
+						break;
+					}
+				}
+
+				if (isRoadConnectedToStartNode)
+				{
+					shortestPath = std::make_shared<Road>(startNode, choosedNode, choosedNode->getGain(), lastEdgeLength);
+					shortestPath->extendTo(otherNode, shortestEdge->getLength());
+					tempGraph->addRoad(shortestPath);
+				}
+				else
+				{
+					throw std::domain_error("It appear that we didn't find a way to link this " +  otherNode->getName() + " to " + startNode->getName() + ".");
+				}
+			}
+			else
+			{
+				shortestPath->extendTo(otherNode, shortestEdge->getLength());
+			}
+		}
+
+		actualGain = shortestPath->GetTotalGain();
+	}
+
+	return shortestPath->toString() + "\n";
+}
+
+std::shared_ptr<Edge> PathSearcher::NextshortestNewEdge(std::shared_ptr<AbstractNode> node, std::shared_ptr<Graph> graph)
+{
+	std::shared_ptr<Edge> shortestEdge;
+	std::shared_ptr<AbstractNode> otherNode;
+	for (std::shared_ptr<Edge> currentEdge : node->getEdges())
+	{
+		otherNode = currentEdge->getOtherNode(node);
+		if (!graph->isNodeFound(otherNode))
+		{
+			if ((shortestEdge == nullptr) ||
+				(shortestEdge->getLength() > currentEdge->getLength())
+				)
+				shortestEdge = currentEdge;
 		}
 	}
 
-	return shortestPath->toString();
-}
+	if (shortestEdge == nullptr)
+		throw std::invalid_argument("The node must at least one edge.");
 
-std::shared_ptr<Edge> PathSearcher::NextshortestEdge(std::shared_ptr<AbstractNode> node, std::vector<std::shared_ptr<AbstractNode>> nodesIncluded)
-{
-	// Pour tous les Edges
-		// Si les deux noeuds ne sont pas présent
-		// Si la distance est plus courte que la plus courte
-			// Prendre ce Edge
-	return {};
+	return shortestEdge;
 }
 
 std::string PathSearcher::ObtainShortestPathWithoutDisjktra(std::shared_ptr<Graph> theGraph_, std::string startKeyNode, unsigned int gainWanted)

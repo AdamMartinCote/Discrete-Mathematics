@@ -37,6 +37,8 @@ std::shared_ptr<Road> Graph::getRoad(std::shared_ptr<AbstractNode> endNode) cons
 		if (currentRoad->GetEndNode() == endNode)
 			return currentRoad;
 	}
+
+	return nullptr;
 }
 #pragma endregion Get
 
@@ -73,6 +75,17 @@ bool Graph::isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const {
 		if (edgeToSearch == edge)
 			return true;
 	}
+	return false;
+}
+
+bool Graph::isNodeFound(std::shared_ptr<AbstractNode> nodeToSearch) const
+{
+	for(auto node : NodeVector_)
+	{
+		if (nodeToSearch == node)
+			return true;
+	}
+
 	return false;
 }
 

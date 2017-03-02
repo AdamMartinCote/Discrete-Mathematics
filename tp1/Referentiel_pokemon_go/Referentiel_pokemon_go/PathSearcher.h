@@ -42,5 +42,5 @@ public:
 
 private:
 
-	static std::shared_ptr<Edge> PathSearcher::NextshortestEdge(std::shared_ptr<AbstractNode> node, std::vector<std::shared_ptr<AbstractNode>> nodesIncluded);
+	static std::shared_ptr<Edge> NextshortestNewEdge(std::shared_ptr<AbstractNode> node, std::shared_ptr<Graph> graph);
 };

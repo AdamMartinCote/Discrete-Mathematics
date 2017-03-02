@@ -42,7 +42,7 @@ int main()
 					"Entrer le gain voulu:\n";
 				std::cin >> wantedGain;
 
-				std::cout << rpgController.plusCourtChemin(nodeName, wantedGain);
+				std::cout << rpgController.plusCourtChemin(nodeName, wantedGain) << std::endl;
 			}
 			catch (const std::invalid_argument& ia) {
 				std::cout << std::endl << ia.what() << "\n \n";

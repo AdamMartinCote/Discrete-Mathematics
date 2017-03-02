@@ -113,70 +113,19 @@ void RPGController::lireGraphe() const
 	std::cout << std::endl;
 }
 
-void RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
+std::string RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
 {
-<<<<<<< HEAD
-	std::cout << PathSearcher::ObtainShortestPathWithoutDisjktra(theGraph_, startKeyNode, gainWanted);
-=======
 	if (!theGraph_->containsNode(startKeyNode))
 		throw  std::invalid_argument("Ce noeud n'existe pas.");
 	if (gainWanted > 350)
 		throw std::out_of_range("Nous n'avons pas trouvé de chemin pour le gain demandé");
 	return PathSearcher::ObtainShortestPath(theGraph_, theGraph_->getNode(startKeyNode), gainWanted);
->>>>>>> 49c93a77b768376e9dfd207b599a16c8edc9ea3a
 }
 
 void RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
 {
-<<<<<<< HEAD
-	auto currentNode = theGraph_->getNode(startKeyNode);
-	std::shared_ptr<AbstractNode> nextNode = currentNode;
-	std::shared_ptr<Edge> nextEdge = nullptr;
-	NodeActivity nodeActivity;
-
-	Graph tempGraph;
-	tempGraph.addNode(currentNode);
-
-	std::string path = currentNode->getName();
-
-	unsigned int distanceTraveled = 0;
-	unsigned int totalGain = 0;
-
-	while (nextNode != nullptr) {
-		currentNode = nextNode;
-		nextNode = nullptr;
-		for (unsigned int i = 0; i < currentNode->getEdgeQuantity(); i++) {
-			unsigned int bestGain = 0;
-			std::shared_ptr<AbstractNode> otherNode = currentNode->getEdges()[i]->getOtherNode(currentNode);
-
-			if (distanceTraveled + currentNode->getEdges()[i]->getLength() <= maximumLength &&
-				otherNode->getGain() / currentNode->getEdges()[i]->getLength() > bestGain &&
-				otherNode->isActive())
-			{
-				nextNode = otherNode;
-				nextEdge = currentNode->getEdges()[i];
-				bestGain = nextNode->getGain() / nextEdge->getLength();
-			}
-		}
-		if (nextNode != nullptr) {
-
-			tempGraph.addNode(nextNode);
-			tempGraph.addEdge(nextEdge);
-			distanceTraveled += nextEdge->getLength();
-			totalGain += nextNode->getGain();
-			path += "->" + nextNode->getName();
-			nodeActivity.setNodeToInactive(currentNode);
-			nodeActivity.activityController(nextEdge->getLength());
-		}
-
-	}
-	std::cout << path << std::endl;
-	std::cout << "Donne un gain de " << totalGain << std::endl;
-	nodeActivity.reset();
-=======
 	if (!theGraph_->containsNode(startKeyNode))
 		throw std::invalid_argument("Ce noeud n'existe pas.");
 	
 	return PathSearcher::ObtainBiggestGain(theGraph_, theGraph_->getNode(startKeyNode), maximumLength);
->>>>>>> 49c93a77b768376e9dfd207b599a16c8edc9ea3a
 }

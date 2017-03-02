@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdexcept>
 #include "RPGController.h"
 
 #pragma region ConstructorDestructor
@@ -114,10 +115,17 @@ void RPGController::lireGraphe() const
 
 std::string RPGController::plusCourtChemin(std::string startKeyNode, unsigned int gainWanted) const
 {
+	if (!theGraph_->containsNode(startKeyNode))
+		throw  std::invalid_argument("Ce noeud n'existe pas.");
+	if (gainWanted > 350)
+		throw std::out_of_range("Nous n'avons pas trouvé de chemin pour le gain demandé");
 	return PathSearcher::ObtainShortestPath(theGraph_, theGraph_->getNode(startKeyNode), gainWanted);
 }
 
 std::string RPGController::plusGrandGain(std::string startKeyNode, unsigned int maximumLength) const
 {
+	if (!theGraph_->containsNode(startKeyNode))
+		throw std::invalid_argument("Ce noeud n'existe pas.");
+	
 	return PathSearcher::ObtainBiggestGain(theGraph_, theGraph_->getNode(startKeyNode), maximumLength);
 }

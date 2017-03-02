@@ -106,7 +106,7 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 		actualGain = shortestPath->GetTotalGain();
 	}
 
-	return shortestPath->toString() + "\n";
+	return "Gain:" + std::to_string(actualGain) + "\n" + "Chemin:" + shortestPath->toString() + "\n" + "Longueur:" + std::to_string(shortestPath->GetTotalLength()) + "\n";
 }
 
 std::shared_ptr<Edge> PathSearcher::NextshortestNewEdge(std::shared_ptr<AbstractNode> node, std::shared_ptr<Graph> graph)

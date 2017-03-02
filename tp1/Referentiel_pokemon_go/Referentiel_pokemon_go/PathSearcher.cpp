@@ -20,36 +20,52 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 	std::string path;
 	unsigned int actualGain = 0;
 
-	Graph tempGraph;
-	tempGraph.addNode(startNode);
+	std::shared_ptr<Graph> tempGraph;
+	tempGraph->addNode(startNode);
 
 	// Rendre infinit tous les chemins en terme de distances.
 
 	std::shared_ptr<Edge> shortestEdge;
+	std::shared_ptr<Edge> shortestNodeEdge;
+	std::shared_ptr<AbstractNode> otherNode;
+	std::shared_ptr<Road> shortestPath;
+	std::shared_ptr<AbstractNode> choosedNode;
+
 
 	// Tant que nous n'avon pas le gain désiré
 	while (actualGain < gainWanted)
 	{
 
 		// Pour tous les noeuds choisis
-		for (std::shared_ptr<AbstractNode> currentNode : tempGraph.getNodeVector())
+		for (std::shared_ptr<AbstractNode> currentNode : tempGraph->getNodeVector())
 		{
-			std::shared_ptr<Edge> shortestNodeEdge = NextshortestEdge(currentNode, tempGraph.getNodeVector());
-			shortestEdge = (shortestEdge->getLength() > shortestNodeEdge->getLength()) ? shortestNodeEdge : shortestEdge;
+			shortestNodeEdge = NextshortestEdge(currentNode, tempGraph->getNodeVector());
+			if (shortestEdge->getLength() > shortestNodeEdge->getLength()) {
+				shortestEdge = shortestNodeEdge;
+				choosedNode = currentNode;
+			}
 		}
 
-		// Ajouter le second noeud au graph temporaire.
-		// Ajouter l'autre noeud au graph temporaire.
-		// Augmenter le gain
+		// Add the node wo wasn't in the temp graph.
+		tempGraph->addNode(shortestEdge->getOtherNode(choosedNode));
 
-		// Si le gain > gain voulu
-			// Créer le chemin partant du noeud de départ au moeud courant.
-				// On cherche le plus court chemin du noued courant au noeud de départ
-						// tant que le noeud n'est pas le noeud de départ
-							// le plus court
+		// Case of the first loop. We are at the root so there's no road created.
+		if(shortestEdge->contains(startNode))
+		{			
+			otherNode = shortestEdge->getOtherNode(startNode);
+			shortestPath = std::make_shared<Road>(startNode, otherNode, otherNode->getGain(), shortestEdge->getLength());
+			tempGraph->addRoad(shortestPath);
+		}
+		else
+		{
+			otherNode = shortestEdge->getOtherNode(choosedNode);
+			shortestPath = tempGraph->getRoad(choosedNode);
+			shortestPath->extendTo(otherNode, shortestEdge->getLength());
+			actualGain = shortestPath->GetTotalGain();
+		}
 	}
 
-	return "";
+	return shortestPath->toString();
 }
 
 std::shared_ptr<Edge> PathSearcher::NextshortestEdge(std::shared_ptr<AbstractNode> node, std::vector<std::shared_ptr<AbstractNode>> nodesIncluded)

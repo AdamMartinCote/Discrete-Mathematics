@@ -17,24 +17,19 @@ public:
 	//! A default destructor
 	~Edge();
 #pragma endregion ConstructorDestructor
-	
-#pragma region Set
-	//! Sets the first Node
+
+	//! A function to find if the node is in the edge or not.
 	/*!
-	* \param node : The Node to set for the firstNode_ attribute
+	* \param node : the node to find.
 	*/
-    void setFirstNode(std::shared_ptr<AbstractNode> node);
-	//! Set the second Node
+	bool contains(std::shared_ptr<AbstractNode> node) const;
+
+	//! A function to find the other Node attached to the current Edge
 	/*!
-	* \param node : The node to set for the secondNode_ attribute
+	* \param node : the first node that we know that is attached to the edge.
+	* \result : The other node of the current edge.
 	*/
-    void setSecondNode(std::shared_ptr<AbstractNode> node);
-	//! Set the length
-	/*!
-	* \param length : The length to set for the length_ attribute
-	*/
-    void setLength(double length);
-#pragma endregion Set
+	std::shared_ptr<AbstractNode> getOtherNode(const std::shared_ptr<AbstractNode> node) const;
 
 #pragma region Get
 	//! Get the first node
@@ -54,12 +49,23 @@ public:
     double getLength() const;
 #pragma endregion Get
 
-	//! A function to find the other Node attached to the current Edge
+#pragma region Set
+	//! Sets the first Node
 	/*!
-	* \param node : the first node that we know that is attached to the edge.
-	* \result : The other node of the current edge.
+	* \param node : The Node to set for the firstNode_ attribute
 	*/
-	std::shared_ptr<AbstractNode> getOtherNode(const std::shared_ptr<AbstractNode> node) const;
+	void setFirstNode(std::shared_ptr<AbstractNode> node);
+	//! Set the second Node
+	/*!
+	* \param node : The node to set for the secondNode_ attribute
+	*/
+	void setSecondNode(std::shared_ptr<AbstractNode> node);
+	//! Set the length
+	/*!
+	* \param length : The length to set for the length_ attribute
+	*/
+	void setLength(double length);
+#pragma endregion Set
 
 private:
 	std::shared_ptr<AbstractNode> firstNode_;

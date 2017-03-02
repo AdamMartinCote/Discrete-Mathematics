@@ -21,8 +21,8 @@ int main()
 	{
 		std::cout <<
 			"(a) Mettre a jour la carte.\n"
-			"(b) D�terminer le plus court chemin(et demander le gain minimal a obtenir)\n"
-			"(c) D�terminer le plus grand gain(et demander la distance maximale a parcourir)\n"
+			"(b) Déterminer le plus court chemin(et demander le gain minimal a obtenir)\n"
+			"(c) Déterminer le plus grand gain(et demander la distance maximale a parcourir)\n"
 			"(d) Quitter\n";
 
 		std::cin >> input;
@@ -34,24 +34,38 @@ int main()
 			rpgController.lireGraphe();
 			break;
 		case 'b':
-			std::cout <<
-				"Entrer le nom du noeud ou debuter:\n";
-			std::cin >> nodeName;
-			std::cout <<
-				"Entrer le gain voulu:\n";
-			std::cin >> wantedGain;
+			try {
+				std::cout << std::endl <<
+					"Entrer le nom du noeud ou debuter:\n";
+				std::cin >> nodeName;
+				std::cout <<
+					"Entrer le gain voulu:\n";
+				std::cin >> wantedGain;
 
-			std::cout << rpgController.plusCourtChemin(nodeName, wantedGain);
+				std::cout << rpgController.plusCourtChemin(nodeName, wantedGain);
+			}
+			catch (const std::invalid_argument& ia) {
+				std::cout << std::endl << ia.what() << "\n \n";
+			}
+			catch (const std::out_of_range& oor) {
+				std::cout << std::endl << oor.what() << "\n \n";
+			}
 			break;
 		case 'c':
 			//rpgController.plusGrandGain();
-			std::cout << 
+			try{
+				std::cout << std::endl <<
 				"Entrer le noeud où débuter:\n";
-			std::cin >> nodeName;
-			std::cout <<
-				"Entrer la distance maximale à parcourir:\n";
-			std::cin >> maximumLength;
-			std::cout << rpgController.plusGrandGain(nodeName, maximumLength) << std::endl;
+				std::cin >> nodeName;
+				std::cout <<
+					"Entrer la distance maximale à parcourir:\n";
+				std::cin >> maximumLength;
+				std::cout << rpgController.plusGrandGain(nodeName, maximumLength) << std::endl;
+			}
+			catch (const std::invalid_argument& ia) {
+				std::cout << std::endl << ia.what() << "\n \n";
+			}
+			
 			break;
 		default:
 			break;

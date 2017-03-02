@@ -111,3 +111,12 @@ std::shared_ptr<Road> Graph::obtainShortestRoad(std::shared_ptr<AbstractNode> st
 
 	return shortestRoad;
 }
+
+bool Graph::containsNode(std::string keyNode) {
+	for (std::shared_ptr<AbstractNode> node : NodeVector_) {
+		if (node->getName() == keyNode) {
+			return true;
+		}
+	}
+	return false;
+}

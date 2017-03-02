@@ -22,21 +22,6 @@ public:
 	~Graph();
 #pragma endregion ConstructorDestructor
 
-	//! A function that tells if an Edge exist
-	/*!
-	* \param edgeToSearch : The Edge we are looking for
-	*/
-	bool isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const;
-
-	bool isNodeFound(std::shared_ptr<AbstractNode> nodeToSearch) const;
-
-	//! A function that return the shortest road based on a given gain.
-	/*!
-	* \param gain : The gain that we are looking for.
-	*/
-	std::shared_ptr<Road> obtainShortestRoad(std::shared_ptr<AbstractNode> startNode, int gain);
-
-
 #pragma region Getter
 
 	//! A function that return the whole node vector
@@ -86,6 +71,32 @@ public:
 	void addRoad(std::shared_ptr<Road> roadToAdd);
 
 #pragma endregion Setter
+
+	//! A function that tells if an Edge exist
+	/*!
+	* \param edgeToSearch : The Edge we are looking for
+	*/
+	bool isEdgeFound(std::shared_ptr<Edge> edgeToSearch) const;
+
+	//! A function that tells if a node exist
+	/*!
+	* \param nodeToSearch : The Node we are looking for
+	*/
+	bool isNodeFound(std::shared_ptr<AbstractNode> nodeToSearch) const;
+
+	//! A function that return the shortest road based on a given gain.
+	/*!
+	* \param gain : The gain that we are looking for.
+	* \return : a shared_ptr<Road> pointing toward the shortest road
+	*/
+	std::shared_ptr<Road> obtainShortestRoad(std::shared_ptr<AbstractNode> startNode, int gain);
+
+	//! A function that verifies if a node exist given it's name
+	/*!
+	* \param keyNode : The key of the node we are looking for.
+	* \return : A boolean that tell if the node exists.
+	*/
+	bool containsNode(std::string keyNode);
 
 private:
 	std::vector<std::shared_ptr<AbstractNode>> NodeVector_;

@@ -106,7 +106,7 @@ std::string PathSearcher::ObtainShortestPath(std::shared_ptr<Graph> theGraph_, s
 		actualGain = shortestPath->GetTotalGain();
 	}
 
-	return shortestPath->toString() + "\n";
+	return "Gain:" + std::to_string(actualGain) + "\n" + "Chemin:" + shortestPath->toString() + "\n" + "Longueur:" + std::to_string(shortestPath->GetTotalLength()) + "\n";
 }
 
 std::shared_ptr<Edge> PathSearcher::NextshortestNewEdge(std::shared_ptr<AbstractNode> node, std::shared_ptr<Graph> graph)
@@ -218,7 +218,9 @@ std::string PathSearcher::ObtainBiggestGain(std::shared_ptr<Graph> theGraph_, st
 
 	}
 	nodeActivity.reset();
-	return path;
+	return "Gain: " + std::to_string(totalGain) + "\n" + 
+		"Chemin: " + path + "\n" +
+		"Longueur: " + std::to_string(distanceTraveled) + "\n";
 }
 #pragma endregion ConstructorDestructor
 

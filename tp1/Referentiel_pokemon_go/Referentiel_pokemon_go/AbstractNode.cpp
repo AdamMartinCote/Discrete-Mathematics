@@ -5,7 +5,6 @@
 #include <memory>
 
 #pragma region ConstructorDestructor
-AbstractNode::AbstractNode(){}
 
 AbstractNode::AbstractNode(std::string name, int gain)
 	:name_(name), gain_(gain), isActive_(true)

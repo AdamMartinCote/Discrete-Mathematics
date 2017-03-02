@@ -9,19 +9,18 @@ class Edge;
 
 class AbstractNode
 {
-public:
 #pragma region ConstructorDestructor
-	//! A default constructor
-    AbstractNode();
+
 	//! A parametrized constructor. Cannot be used since it's an Abstract class.
 	/*!
 	* \param name : The name of the Node
 	*/
+protected:
     AbstractNode(std::string name, int gain);
 	//! A default destructor
     virtual ~AbstractNode();
 #pragma endregion ConstructorDestructor
-
+public:
 #pragma region Get
 	//! Get the Node type
 	/*!

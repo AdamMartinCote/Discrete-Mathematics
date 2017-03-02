@@ -51,6 +51,9 @@
     <ClCompile Include="PathSearcher.cpp">
       <Filter>Source Files\util</Filter>
     </ClCompile>
+    <ClCompile Include="Road.cpp">
+      <Filter>Source Files\models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Pokestop.h">
@@ -81,6 +84,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PathSearcher.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Road.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

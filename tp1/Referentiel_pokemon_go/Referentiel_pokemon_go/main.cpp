@@ -41,7 +41,7 @@ int main()
 				"Entrer le gain voulu:\n";
 			std::cin >> wantedGain;
 
-			rpgController.plusCourtChemin(nodeName, wantedGain);
+			std::cout << rpgController.plusCourtChemin(nodeName, wantedGain);
 			break;
 		case 'c':
 			//rpgController.plusGrandGain();
@@ -51,7 +51,7 @@ int main()
 			std::cout <<
 				"Entrer la distance maximale à parcourir:\n";
 			std::cin >> maximumLength;
-			rpgController.plusGrandGain(nodeName, maximumLength);
+			std::cout << rpgController.plusGrandGain(nodeName, maximumLength) << std::endl;
 			break;
 		default:
 			break;

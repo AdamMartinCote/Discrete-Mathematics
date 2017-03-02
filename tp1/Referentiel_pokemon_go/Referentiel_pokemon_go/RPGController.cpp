@@ -63,7 +63,7 @@ void RPGController::creerGraphe(std::string fileName)
 			}
 			else
 			{
-				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
+				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);	//TODO add node
 				theGraph_->addNode(nodeToAdd);
 			}
 

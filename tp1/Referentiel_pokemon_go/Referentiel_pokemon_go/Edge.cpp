@@ -10,6 +10,12 @@ Edge::Edge(std::shared_ptr<AbstractNode> node1, std::shared_ptr<AbstractNode> no
 Edge::~Edge()
 {
 }
+
+bool Edge::contains(std::shared_ptr<AbstractNode> node) const
+{
+	return (firstNode_ == node || secondNode_ == node) ? true : false;
+}
+
 #pragma endregion ConstructorDestructor
 
 #pragma region Set

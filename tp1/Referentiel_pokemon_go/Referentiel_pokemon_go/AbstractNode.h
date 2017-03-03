@@ -9,7 +9,7 @@ class Edge;
 
 class AbstractNode
 {
-public:
+protected:
 #pragma region ConstructorDestructor
 	//! A default constructor
     AbstractNode();
@@ -23,6 +23,7 @@ public:
 #pragma endregion ConstructorDestructor
 
 #pragma region Get
+public:
 	//! Get the Node type
 	/*!
 	* \result : The type of the Node

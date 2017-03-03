@@ -1,3 +1,12 @@
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <memory>
+
+#include "Pokemon.h"
+#include "Pokestop.h"
+#include "Arena.h"
 #include "Graph.h"
 
 
@@ -5,6 +14,90 @@
 Graph::Graph()
 {
 }
+
+Graph::Graph(std::string fileName)
+{
+	std::ifstream inputFile;
+	inputFile.open(fileName);
+
+	if (inputFile.is_open()) {
+
+		std::string line, item, field;
+
+		//get first line (nodes)2
+		std::getline(inputFile, line);
+
+		std::stringstream node_line_stream(line);
+
+		//parse nodes
+		while (std::getline(node_line_stream, item, ';'))
+		{
+			std::stringstream item_stream(item);
+
+			std::string name;
+			std::string nodeType;
+
+			int gain;
+
+			std::getline(item_stream, name, ',');
+			std::getline(item_stream, nodeType, ',');
+			item_stream >> gain;
+
+			// identify Node type
+			if (nodeType == "pokemon")
+			{
+				std::shared_ptr<Pokemon> nodeToAdd = std::make_shared<Pokemon>(name, gain);
+				addNode(nodeToAdd);
+			}
+			else if (nodeType == "arene")
+			{
+				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
+				addNode(nodeToAdd);
+			}
+			else if (nodeType == "pokestop")
+			{
+				std::shared_ptr<Pokestop> nodeToAdd = std::make_shared<Pokestop>(name, gain);
+				addNode(nodeToAdd);
+			}
+			else
+			{
+				std::shared_ptr<Arena> nodeToAdd = std::make_shared<Arena>(name, gain);
+				addNode(nodeToAdd);
+			}
+
+		}
+
+		//get second line (edges)
+		std::getline(inputFile, line);
+
+		std::stringstream edge_line_stream(line);
+
+		//parse edges
+		while (std::getline(edge_line_stream, item, ';'))
+		{
+			std::stringstream item_stream(item);
+
+			std::string node1;
+			std::string node2;
+			int distance;
+
+			std::getline(item_stream, node1, ',');
+			std::getline(item_stream, node2, ',');
+			item_stream >> distance;
+
+			std::shared_ptr<AbstractNode> ptrToNode1 = getNode(node1);
+			std::shared_ptr<AbstractNode> ptrToNode2 = getNode(node2);
+
+			// add the 2 potential node pointers to the new edge
+			std::shared_ptr<Edge> ptrEdge = addEdge(ptrToNode1, ptrToNode2, distance);
+
+			ptrToNode1->addEdge(ptrEdge);
+			ptrToNode2->addEdge(ptrEdge);
+		}
+	}
+	else std::cout << "Error: coudn't open file" << std::endl;
+}
+
 Graph::Graph(const Graph& toDuplicate)
 {
 
@@ -42,11 +135,6 @@ std::shared_ptr<Road> Graph::getRoad(std::shared_ptr<AbstractNode> endNode) cons
 }
 #pragma endregion Get
 
-//void Graph::addNode(std::string name, std::string type, int gain)
-//{
-//	
-//	NodeVector_.push_back(std::make_shared<AbstractNode>(name, gain));
-//}
 
 void Graph::addNode(std::shared_ptr<AbstractNode> nodeToAdd)
 {

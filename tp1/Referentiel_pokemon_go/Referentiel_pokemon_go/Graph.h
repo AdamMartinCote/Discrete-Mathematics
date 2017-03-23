@@ -13,11 +13,18 @@ public:
 	//! A default constructor
 	Graph();
 
+	//! A constructor that use a text file as template
+	/*!
+	* \param fileName : the file name 
+	*/
+	Graph(std::string fileName);
+
 	//! A duplicate constructor
 	/*!
 	* \param toDuplicate : the Graph to copy
 	*/
 	Graph(const Graph& toDuplicate);
+
 	//! A default destructor
 	~Graph();
 #pragma endregion ConstructorDestructor

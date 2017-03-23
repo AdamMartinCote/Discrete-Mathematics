@@ -22,6 +22,7 @@ protected:
 #pragma endregion ConstructorDestructor
 public:
 #pragma region Get
+public:
 	//! Get the Node type
 	/*!
 	* \result : The type of the Node

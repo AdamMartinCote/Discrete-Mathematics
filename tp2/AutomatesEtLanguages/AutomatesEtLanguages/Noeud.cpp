@@ -2,11 +2,6 @@
 
 
 
-Noeud::Noeud()
-{
-}
-
-
 Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, Noeud parent)
 {
 }
@@ -26,7 +21,7 @@ std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
 
 Noeud Noeud::obtenirParent() const
 {
-	return Noeud();
+	return Noeud("a", true, 0);
 }
 
 bool Noeud::estUnMot() const

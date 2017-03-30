@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Controlleur.cpp" />
+    <ClCompile Include="Controleur.cpp" />
     <ClCompile Include="Correcteur.cpp" />
     <ClCompile Include="GestionnaireSuggestions.cpp" />
     <ClCompile Include="Lexique.cpp" />
@@ -155,7 +155,7 @@
     <ClCompile Include="UsineLexique.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Controlleur.h" />
+    <ClInclude Include="Controleur.h" />
     <ClInclude Include="Correcteur.h" />
     <ClInclude Include="GestionnaireSuggestions.h" />
     <ClInclude Include="Lexique.h" />

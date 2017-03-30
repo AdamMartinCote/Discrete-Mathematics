@@ -13,8 +13,10 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 {
 	// Création du MOCK de lexique.
-	std::shared_ptr<Noeud> noeauA(new Noeud("a", true, 0));
+	std::shared_ptr<Noeud> noeauA(new Noeud("a", true, 0)),
+		noeudB(new Noeud("ab", true, 1));
 	lexique_.ajouterArbre(noeauA);
+	lexique_.ajouterNoeud(noeudB, 'a');
 
 	std::string motRetourne = mot;
 	// Vérifier si le mot fait partit d'un des mots du lexique.

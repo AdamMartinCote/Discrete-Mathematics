@@ -14,6 +14,7 @@ public:
 	~Noeud();
 
 	std::vector<std::shared_ptr<Noeud>> obtenirEnfants() const;
+	int obtenirNombreEnfants() const;
 	void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
 	std::shared_ptr<Noeud> obtenirParent() const;
 

@@ -75,8 +75,9 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 	}
 }
 
-void ChoixRetourAuMenu(Controleur* controleur, char choixUtilisateur)
+void ChoixRetourAuMenu(Controleur* controleur, char etatCourant)
 {
+	char choixUtilisateur;
 	std::cout << "Voulez-vous retourner au menu principal ? (oui/non)" << "\n";
 	std::cin >> choixUtilisateur;
 	if (choixUtilisateur == 'o')
@@ -84,5 +85,5 @@ void ChoixRetourAuMenu(Controleur* controleur, char choixUtilisateur)
 		MenuPrincipal(controleur);
 	}
 	else
-		ExecuterChoix(choixUtilisateur, controleur);
+		ExecuterChoix(etatCourant, controleur);
 }

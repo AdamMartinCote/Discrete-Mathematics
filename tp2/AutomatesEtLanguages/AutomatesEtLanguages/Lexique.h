@@ -15,5 +15,6 @@ public:
 private:
 	std::vector<std::shared_ptr<Noeud>> lettresArbres_;
 	bool Lexique::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre);
+	bool Lexique::ajouterNoeud(std::shared_ptr<Noeud> noeudAAjouter, std::vector<std::shared_ptr<Noeud>> sousArbre);
 };
 

@@ -18,7 +18,7 @@ Noeud::~Noeud()
 
 std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
 {
-	return std::vector<std::shared_ptr<Noeud>>();
+	return enfants_;
 }
 
 std::shared_ptr<Noeud> Noeud::obtenirParent() const
@@ -45,3 +45,8 @@ void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter)
 {
 	enfants_.push_back(noeudAAjouter);
 }
+
+int Noeud::obtenirNombreEnfants() const {
+	return enfants_.size();
+}
+

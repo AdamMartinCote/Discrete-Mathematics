@@ -6,7 +6,7 @@
 void MenuPrincipal(Controleur* controleur);
 void AfficherMenu();
 void ExecuterChoix(char choixUtilisateur, Controleur* controleur);
-void RetourAuMenu(Controleur* controleur);
+void ChoixRetourAuMenu(Controleur* controleur, char choixUtilisateur);
 
 
 const int INDICE_LEXIQUE = 1;
@@ -53,7 +53,7 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
 		break;
 	case '2':
-		RetourAuMenu(controleur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '3':
 		std::cout << "Veuillez entrer un mot:";
@@ -62,11 +62,11 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		std::cout << "Voici le mot corrigé : " << "\n";
 		std::cout << motCorrige << "\n";
 
-		RetourAuMenu(controleur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		
 		break;
 	case '4':
-		RetourAuMenu(controleur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '5':
 		std::cout << "Merci d'avoir utiliser notre application..." << "\n";
@@ -75,13 +75,14 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 	}
 }
 
-void RetourAuMenu(Controleur* controleur)
+void ChoixRetourAuMenu(Controleur* controleur, char choixUtilisateur)
 {
-	char choixUtilisateur;
 	std::cout << "Voulez-vous retourner au menu principal ? (oui/non)" << "\n";
 	std::cin >> choixUtilisateur;
 	if (choixUtilisateur == 'o')
-	{ 
+	{
 		MenuPrincipal(controleur);
 	}
+	else
+		ExecuterChoix(choixUtilisateur, controleur);
 }

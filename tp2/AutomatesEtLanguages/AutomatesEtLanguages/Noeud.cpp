@@ -2,11 +2,13 @@
 
 
 
-Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, Noeud parent)
+Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent)
+	:valeur_(valeur), estUnMot_(estUnMot), niveau_(niveau), parent_(parent)
 {
 }
 
 Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau)
+	: valeur_(valeur), estUnMot_(estUnMot), niveau_(niveau)
 {
 }
 
@@ -36,9 +38,10 @@ unsigned int Noeud::obtenirNiveau() const
 
 std::string Noeud::obtenirValeur() const
 {
-	return std::string();
+	return valeur_;
 }
 
-void Noeud::ajouterEnfant(Noeud)
+void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter)
 {
+	enfants_.push_back(noeudAAjouter);
 }

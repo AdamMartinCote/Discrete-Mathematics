@@ -4,22 +4,26 @@ Controleur::Controleur()
 {	
 }
 
-bool Controleur::InitialiserProgramme(std::string cheminFichier) const
+bool Controleur::InitialiserProgramme(std::string cheminFichier)
 {
 	//lexique = UsineLexique::initialiserLexique(cheminFichier);
 	return false;
 }
 
-std::string Controleur::VerifierOrthographeDuMot(std::string mot) const
+std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 {
 	// Création du MOCK de lexique.
+	std::shared_ptr<Noeud> noeauA(new Noeud("a", true, 0));
+	lexique_.ajouterArbre(noeauA);
+
 	std::string motRetourne = mot;
 	// Vérifier si le mot fait partit d'un des mots du lexique.
 		// Si oui, retourne le mot. Celui-ci est bien orthographié.
-	return motRetourne;
+	if(lexique_.verifierSousChaine(mot))
+		return motRetourne;
 
 	// Si non, recherche parmi les mots commençant par la même lettre un mot qui s'apparente à celui-ci.
-
+	
 }
 
 

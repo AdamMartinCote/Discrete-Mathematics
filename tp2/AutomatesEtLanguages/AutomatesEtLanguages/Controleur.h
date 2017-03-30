@@ -5,10 +5,10 @@ class Controleur
 {
 public:
 	Controleur();
-	bool InitialiserProgramme(std::string cheminFichier) const;
-	std::string VerifierOrthographeDuMot(std::string mot) const;
+	bool InitialiserProgramme(std::string cheminFichier);
+	std::string VerifierOrthographeDuMot(std::string mot);
 	~Controleur();
 private:
-	Lexique lexique;
+	Lexique lexique_;
 };
 

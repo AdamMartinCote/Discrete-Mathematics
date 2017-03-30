@@ -31,8 +31,25 @@ bool Lexique::ajouterNoeud(std::shared_ptr<Noeud> noeudAAjouter, char premierLet
 
 bool Lexique::verifierSousChaine(std::string sousChaine)
 {
-	// vérifie si une sous-chaine est contenue dans le lexique
+	for (std::shared_ptr<Noeud> lettreArbre : lettresArbres_)
+	{
+		if (lettreArbre->obtenirValeur() == sousChaine)
+			return true;
+		else
+			verifierSousChaine(sousChaine, lettreArbre->obtenirEnfants());			
+	}
 	return false;
+}
+
+bool Lexique::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre)
+{
+	for (std::shared_ptr<Noeud> noeudParent : SousArbre)
+	{
+		if (noeudParent->obtenirValeur() == sousChaine)
+			return true;
+		else
+			verifierSousChaine(sousChaine, noeudParent->obtenirEnfants());
+	}
 }
 
 bool Lexique::contientLettre(char lettre)

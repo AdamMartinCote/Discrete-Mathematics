@@ -14,5 +14,6 @@ public:
 	std::shared_ptr<Noeud> Lexique::ObtenirArbre(char lettre);
 private:
 	std::vector<std::shared_ptr<Noeud>> lettresArbres_;
+	bool Lexique::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre);
 };
 

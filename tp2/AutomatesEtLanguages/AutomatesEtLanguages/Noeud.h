@@ -10,19 +10,17 @@ public:
 	Noeud(std::string valeur, bool estUnMot, unsigned int niveau);
 
 	// Constructeur noeu[df]
-	Noeud(std::string valeur, bool estUnMot, unsigned int niveau, Noeud parent);
+	Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent);
 	~Noeud();
 
 	std::vector<std::shared_ptr<Noeud>> obtenirEnfants() const;
-
+	void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
 	std::shared_ptr<Noeud> obtenirParent() const;
 
 	bool estUnMot() const;		 
 												 
 	unsigned int obtenirNiveau() const;
 	std::string obtenirValeur() const;
-	
-	void ajouterEnfant(Noeud);
 
 private:
 	std::string valeur_;

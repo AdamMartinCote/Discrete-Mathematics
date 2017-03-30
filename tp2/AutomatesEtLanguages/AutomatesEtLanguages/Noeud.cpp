@@ -19,9 +19,9 @@ std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
 	return std::vector<std::shared_ptr<Noeud>>();
 }
 
-Noeud Noeud::obtenirParent() const
+std::shared_ptr<Noeud> Noeud::obtenirParent() const
 {
-	return Noeud("a", true, 0);
+	return parent_;
 }
 
 bool Noeud::estUnMot() const

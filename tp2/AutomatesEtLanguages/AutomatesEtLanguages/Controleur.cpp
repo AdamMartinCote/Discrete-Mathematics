@@ -12,6 +12,7 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier) const
 
 std::string Controleur::VerifierOrthographeDuMot(std::string mot) const
 {
+	// Création du MOCK de lexique.
 	std::string motRetourne = mot;
 	// Vérifier si le mot fait partit d'un des mots du lexique.
 		// Si oui, retourne le mot. Celui-ci est bien orthographié.

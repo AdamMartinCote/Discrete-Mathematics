@@ -15,7 +15,7 @@ public:
 
 	std::vector<std::shared_ptr<Noeud>> obtenirEnfants() const;
 
-	Noeud obtenirParent() const;
+	std::shared_ptr<Noeud> obtenirParent() const;
 
 	bool estUnMot() const;		 
 												 

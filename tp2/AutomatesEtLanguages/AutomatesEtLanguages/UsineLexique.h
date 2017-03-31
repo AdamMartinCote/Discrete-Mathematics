@@ -8,6 +8,6 @@ public:
 	UsineLexique();
 	~UsineLexique();
 
-	static Lexique initialiserLexique(std::string nomFichier);
+	static std::unique_ptr<Lexique> initialiserLexique(std::string nomFichier);
 };
 

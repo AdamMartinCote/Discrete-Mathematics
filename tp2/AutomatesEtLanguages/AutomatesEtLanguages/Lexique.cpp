@@ -118,3 +118,8 @@ std::shared_ptr<Noeud> Lexique::ObtenirArbre(char lettre)
 
 	return nullptr;
 }
+
+std::vector<std::shared_ptr<Noeud>> Lexique::obtenirLesArbres() const
+{
+	return lettresArbres_;
+}

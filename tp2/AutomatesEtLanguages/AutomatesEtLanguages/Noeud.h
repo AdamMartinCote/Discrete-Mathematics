@@ -9,7 +9,7 @@ public:
 	// Constructeur racine
 	Noeud(std::string valeur, bool estUnMot, unsigned int niveau);
 
-	// Constructeur noeu[df]
+	// Constructeur noeud
 	Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent);
 	~Noeud();
 
@@ -19,9 +19,15 @@ public:
 	std::shared_ptr<Noeud> obtenirParent() const;
 
 	bool estUnMot() const;		 
-												 
+	
+
 	unsigned int obtenirNiveau() const;
 	std::string obtenirValeur() const;
+
+	bool trouverChaineDansSousArbre(std::string) const;
+
+	// debug
+	void AfficherEnfants() const;
 
 private:
 	std::string valeur_;

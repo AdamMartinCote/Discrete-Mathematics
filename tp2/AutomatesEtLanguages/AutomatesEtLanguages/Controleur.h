@@ -1,5 +1,6 @@
 #include <string>
 #include "Lexique.h"
+#include "UsineLexique.h"
 #pragma once
 class Controleur
 {
@@ -9,6 +10,6 @@ public:
 	std::string VerifierOrthographeDuMot(std::string mot);
 	~Controleur();
 private:
-	Lexique lexique_;
+	std::unique_ptr<Lexique> lexique_;
 };
 

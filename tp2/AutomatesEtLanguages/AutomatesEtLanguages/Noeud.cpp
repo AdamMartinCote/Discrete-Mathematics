@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Noeud.h"
 
 
@@ -39,6 +40,19 @@ unsigned int Noeud::obtenirNiveau() const
 std::string Noeud::obtenirValeur() const
 {
 	return valeur_;
+}
+
+bool Noeud::trouverChaineDansSousArbre(std::string) const
+{
+	return false;
+}
+
+void Noeud::AfficherEnfants() const
+{
+	for (auto i : enfants_) {
+		std::cout << i->valeur_ << " ";
+	}
+	std::cout << std::endl;
 }
 
 void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter)

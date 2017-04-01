@@ -29,7 +29,9 @@ public:
 
 	// debug
 	void AfficherEnfants() const;
+	void AfficherPremierMotDuSousArbre() const;
 
+	void marquerUnMot();
 private:
 	std::string valeur_;
 	bool estUnMot_;

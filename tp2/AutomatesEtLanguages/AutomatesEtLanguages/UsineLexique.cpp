@@ -47,7 +47,7 @@ std::unique_ptr<Lexique> UsineLexique::initialiserLexiqueOptimise1(std::string n
 	fichier.open(nomFichier);
 	if (!fichier.is_open()) throw std::runtime_error("Le fichier n'a pu être ouvert, vérifier le chemin d'accès.");
 
-	// creer un arbre de toute les sous-chaines, sans optimisation (avec doublons)
+	// cree un arbre unique pour chaque lettre
 	std::string buffer, sousChaine;
 	std::unique_ptr<Lexique> lexique(new Lexique());
 	while (std::getline(fichier, buffer)) {
@@ -76,6 +76,7 @@ std::unique_ptr<Lexique> UsineLexique::initialiserLexiqueOptimise1(std::string n
 			dernierNoeud = nouveauNoeud;
 			longueurSousChaine++;
 		}
+		dernierNoeud->marquerUnMot();
 	}
 	return lexique;
 }

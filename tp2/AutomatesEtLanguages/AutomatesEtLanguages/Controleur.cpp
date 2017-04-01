@@ -21,6 +21,9 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 	for (unsigned int i = 0; i < lexique_->obtenirLesArbres().size(); i++) {
 		std::cout << lexique_->obtenirLesArbres().at(i)->obtenirValeur() << " ";
 	}
+
+	// DEBUG imprime quelque mots du lexique:
+	lexique_->obtenirLesArbres()->s
 	return false;
 }
 

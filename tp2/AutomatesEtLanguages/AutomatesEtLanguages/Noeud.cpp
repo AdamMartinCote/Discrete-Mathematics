@@ -55,6 +55,20 @@ void Noeud::AfficherEnfants() const
 	std::cout << std::endl;
 }
 
+void Noeud::AfficherPremierMotDuSousArbre() const
+{
+	const Noeud * tmp = this;
+	while(tmp->enfants_[0] != nullptr){
+		tmp = (tmp->enfants_[0]).get();
+	}
+	std::cout << tmp->valeur_ << std::endl;
+}
+
+void Noeud::marquerUnMot()
+{
+	estUnMot_ = true;
+}
+
 void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter)
 {
 	enfants_.push_back(noeudAAjouter);

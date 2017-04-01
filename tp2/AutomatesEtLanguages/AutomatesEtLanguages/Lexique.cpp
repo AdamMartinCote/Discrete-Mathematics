@@ -77,29 +77,6 @@ bool Lexique::ajouterNoeud(std::shared_ptr<Noeud> noeudAAjouter, std::vector<std
 	return false;
 }
 
-bool Lexique::verifierSousChaine(std::string sousChaine)
-{
-	for (std::shared_ptr<Noeud> lettreArbre : lettresArbres_)
-	{
-		if (lettreArbre->obtenirValeur() == sousChaine)
-			return true;
-		else
-			return verifierSousChaine(sousChaine, lettreArbre->obtenirEnfants());
-	}
-	return false;
-}
-
-bool Lexique::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre)
-{
-	for (std::shared_ptr<Noeud> noeudParent : SousArbre)
-	{
-		if (noeudParent->obtenirValeur() == sousChaine)
-			return true;
-		else
-			return verifierSousChaine(sousChaine, noeudParent->obtenirEnfants());
-	}
-}
-
 bool Lexique::contientLettre(char lettre)
 {
 	std::string lettreAChercher(1, lettre);
@@ -111,7 +88,7 @@ bool Lexique::contientLettre(char lettre)
 	return false;
 }
 
-std::shared_ptr<Noeud> Lexique::ObtenirArbre(char lettre)
+std::shared_ptr<Noeud> Lexique::ObtenirArbreDeLaLettre(char lettre)
 {
 	std::string lettreAChercher(1, lettre);
 

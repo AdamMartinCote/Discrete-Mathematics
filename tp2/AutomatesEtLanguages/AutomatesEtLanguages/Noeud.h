@@ -17,6 +17,7 @@ public:
 	int obtenirNombreEnfants() const;
 	void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
 	std::shared_ptr<Noeud> obtenirParent() const;
+	bool verifierSousChaine(std::string sousChaine);
 
 	bool estUnMot() const;		 
 	
@@ -36,5 +37,8 @@ private:
 
 	std::shared_ptr<Noeud> parent_;
 	std::vector<std::shared_ptr<Noeud>> enfants_;
+
+	bool verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre);
+
 };
 

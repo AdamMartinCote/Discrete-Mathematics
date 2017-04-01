@@ -29,7 +29,7 @@ std::shared_ptr<Noeud> Noeud::obtenirParent() const
 
 bool Noeud::estUnMot() const
 {
-	return false;
+	return estUnMot_;
 }
 
 unsigned int Noeud::obtenirNiveau() const
@@ -62,5 +62,27 @@ void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter)
 
 int Noeud::obtenirNombreEnfants() const {
 	return enfants_.size();
+}
+
+bool Noeud::verifierSousChaine(std::string sousChaine)
+{
+	return verifierSousChaine(sousChaine, obtenirEnfants());
+}
+
+bool Noeud::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre)
+{
+	for (std::shared_ptr<Noeud> noeudParent : SousArbre)
+	{
+		if (noeudParent->obtenirValeur() != sousChaine)
+			return verifierSousChaine(sousChaine, noeudParent->obtenirEnfants());
+		else
+		{
+			if ((noeudParent->obtenirValeur() == sousChaine) && (noeudParent->estUnMot()))
+				return true;
+			else
+				return false;
+		}
+	}
+	return false;
 }
 

@@ -3,13 +3,14 @@
 #include "Controleur.h"
 #include "UsineLexique.h"
 
+const int INDICE_LEXIQUE = 1;
+
+// prototypes
 void MenuPrincipal(Controleur* controleur);
 void AfficherMenu();
 void ExecuterChoix(char choixUtilisateur, Controleur* controleur);
 void ChoixRetourAuMenu(Controleur* controleur, char choixUtilisateur);
 
-
-const int INDICE_LEXIQUE = 1;
 int main() {
 	setlocale(LC_ALL, "");
 	Controleur controleur;
@@ -30,9 +31,9 @@ void MenuPrincipal(Controleur* controleur)
 
 void AfficherMenu()
 {
-	std::cout << "TP2: Automates et langages" << "\n";
+	std::cout << "\nTP2: Automates et langages" << "\n";
 	std::cout << "Par : Jonathan, Adam et Louis" << "\n";
-	std::cout << "\n\n" << "Veuillez choisir parmi les options suivantes :" << "\n";
+	std::cout << "\n" << "Veuillez choisir parmi les options suivantes :" << "\n";
 	std::cout << "1) Initialiser le programme." << "\n";
 	std::cout << "2) Utiliser la fonctionnalité de suggestion." << "\n";
 	std::cout << "3) Utiliser la fonctionnalité de correction." << "\n";
@@ -53,12 +54,19 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
 		}
+		catch (...) {
+			std::cout << "une erreur inconnue est survenue" << std::endl;
+		}
 		break;
 	case '2':
+<<<<<<< HEAD
 		std::cout << "Veuillez entrer un mot" << std::endl;
 		std::cin >> motUtilisateur;
 		controleur->SuggestionDeMots(motUtilisateur);
 		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+=======
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
+>>>>>>> 47604da7b77108a8cc0057685beedf2bdc14dd57
 		break;
 	case '3':
 		std::cout << "Veuillez entrer un mot:";
@@ -67,11 +75,11 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		std::cout << "Voici le mot corrigé : " << "\n";
 		std::cout << motCorrige << "\n";
 
-		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		
 		break;
 	case '4':
-		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '5':
 		std::cout << "Merci d'avoir utiliser notre application..." << "\n";

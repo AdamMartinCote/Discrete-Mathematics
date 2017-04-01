@@ -11,6 +11,11 @@ Controleur::~Controleur()
 
 bool Controleur::quitterProgramme = false;
 
+std::shared_ptr<Lexique > Controleur::ObtenirLexique() const
+{
+	return lexique_;
+}
+
 bool Controleur::InitialiserProgramme(std::string cheminFichier)
 {
 	lexique_ = UsineLexique::initialiserLexique(cheminFichier);
@@ -19,6 +24,13 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 		std::cout << lexique_->obtenirLesArbres().at(i)->obtenirValeur() << " ";
 	}
 	return false;
+}
+
+void Controleur::SuggestionDeMots(std::string motEntree) const
+{
+	GestionnaireSuggestions gestionnaireSuggestions;
+	Lexique lexique;
+	gestionnaireSuggestions.SuggestionsMots(lexique_, motEntree);
 }
 
 std::string Controleur::VerifierOrthographeDuMot(std::string mot)

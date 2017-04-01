@@ -13,6 +13,7 @@ public:
 	Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent);
 	~Noeud();
 
+	bool contientEnfants();
 	std::vector<std::shared_ptr<Noeud>> obtenirEnfants() const;
 	int obtenirNombreEnfants() const;
 	std::vector<std::shared_ptr<Noeud>> obtenirMotsSelonNiveau(int niveau);

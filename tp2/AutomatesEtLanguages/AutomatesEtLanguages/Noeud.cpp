@@ -10,15 +10,22 @@ Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared
 
 Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau)
 	: valeur_(valeur), estUnMot_(estUnMot), niveau_(niveau)
-{
-}
+{}
 
 Noeud::~Noeud()
 {
 }
 
-std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
+bool Noeud::contientEnfants()
 {
+	if (enfants_.empty())
+		return false;
+	else
+		return true;
+}
+
+std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
+{		
 	return enfants_;
 }
 
@@ -89,20 +96,22 @@ std::vector<std::shared_ptr<Noeud>> Noeud::obtenirMotsSelonNiveau(int niveau)
 	return *ptrNoeudsTrouvesPartages.get();
 }
 
-void Noeud::obtenirMotSelonNiveau(int niveau, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves)
+void Noeud::obtenirMotSelonNiveau(int niveauRecherche, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves)
 {
 	for (std::shared_ptr<Noeud> enfant : enfants_)
 	{
-		if (enfant->estUnMot() && niveau == enfant->obtenirNiveau())
+		if (enfant->estUnMot() && niveauRecherche == enfant->obtenirNiveau())
 			noeudsTrouves->push_back(enfant);
 		else
-			enfant->obtenirMotSelonNiveau(niveau, noeudsTrouves);
+			enfant->obtenirMotSelonNiveau(niveauRecherche, noeudsTrouves);
 	}
 }
 
 bool Noeud::verifierSousChaine(std::string sousChaine)
 {
-	return verifierSousChaine(sousChaine, obtenirEnfants());
+	if(contientEnfants())
+		return verifierSousChaine(sousChaine, obtenirEnfants());
+	return false;
 }
 
 bool Noeud::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre)

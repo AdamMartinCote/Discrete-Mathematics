@@ -58,7 +58,7 @@ void Noeud::AfficherEnfants() const
 void Noeud::AfficherPremierMotDuSousArbre() const
 {
 	const Noeud * tmp = this;
-	while(tmp->enfants_[0] != nullptr){
+	while(!tmp->estUnMot()){
 		tmp = (tmp->enfants_[0]).get();
 	}
 	std::cout << tmp->valeur_ << std::endl;

@@ -11,6 +11,11 @@ Lexique::~Lexique()
 {
 }
 
+std::vector<std::shared_ptr<Noeud>> Lexique::ObtenirLettresArbres()
+{
+	return lettresArbres_;
+}
+
 bool Lexique::ajouterArbre(std::shared_ptr<Noeud> noeud)
 {
 	if (noeud->obtenirParent() != nullptr)

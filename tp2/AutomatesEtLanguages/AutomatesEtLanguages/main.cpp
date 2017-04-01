@@ -59,7 +59,12 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		}
 		break;
 	case '2':
+		std::cout << "Veuillez entrer un mot" << std::endl;
+		std::cin >> motUtilisateur;
+		controleur->SuggestionDeMots(motUtilisateur);
+		//ChoixRetourAuMenu(controleur, choixUtilisateur);
 		ChoixRetourAuMenu(controleur, choixUtilisateur);
+
 		break;
 	case '3':
 		std::cout << "Veuillez entrer un mot:";

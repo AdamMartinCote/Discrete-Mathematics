@@ -22,7 +22,6 @@ public:
 	* Le destructeur
 	*/
 	~Noeud();
-#pragma endregion
 
 #pragma region getter
 	/**
@@ -75,6 +74,11 @@ public:
 	*/
 	void obtenirMotSelonNiveau(int niveau, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves);
 #pragma endregion
+
+	/**
+	*	Savoir s'il existe des enfants dans le noeud courant.
+	*/
+	bool contientEnfants();
 
 	/**
 	* Ajouter un enfant à un noeud

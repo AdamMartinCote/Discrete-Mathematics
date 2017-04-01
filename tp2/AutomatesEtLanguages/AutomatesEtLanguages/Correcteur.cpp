@@ -29,14 +29,14 @@ std::string Correcteur::VerifierOrthographeDuMot(std::string mot, std::shared_pt
 		motsPotentiels = arbreDeLaLettre->obtenirMotsSelonNiveau(niveauMot);
 
 		// Filtrer et retourner le premier élément parmi ceux qui n'ont qu'un seul caractère différent.
-		return filtreNoeudsAvecUneSeuleDifference(motsPotentiels, mot).at(0)->obtenirValeur();
+		return (filtreNoeudsAvecUneSeuleDifference(motsPotentiels, mot) != nullptr) ? filtreNoeudsAvecUneSeuleDifference(motsPotentiels, mot)->obtenirValeur() : "Aucun mot trouvé dans le lexique.\n\n\n";
 	}
 	return "Aucun mot trouvé dans le lexique.\n\n\n";
 }
 
-std::vector<std::shared_ptr<Noeud>> Correcteur::filtreNoeudsAvecUneSeuleDifference(std::vector<std::shared_ptr<Noeud>> noeuds, std::string mot)
+std::shared_ptr<Noeud> Correcteur::filtreNoeudsAvecUneSeuleDifference(std::vector<std::shared_ptr<Noeud>> noeuds, std::string mot)
 {
-	std::vector<std::shared_ptr<Noeud>> noeudAvecUneSeuleDifference;
+	std::vector<std::shared_ptr<Noeud>> noeudsAvecUneSeuleDifference;
 	char carMotCourantDroite, carMotCourantGauche, carNoeudCourantDroite, carNoeudCourantGauche;
 	int erreurNoeudCourant = 0;
 	for (std::shared_ptr<Noeud> noeud : noeuds)
@@ -60,10 +60,10 @@ std::vector<std::shared_ptr<Noeud>> Correcteur::filtreNoeudsAvecUneSeuleDifferen
 
 		if (erreurNoeudCourant <= 1)
 		{
-			noeudAvecUneSeuleDifference.push_back(noeud);
+			return noeud;
 		}
 		erreurNoeudCourant = 0;
 	}
 
-	return noeudAvecUneSeuleDifference;
+	return nullptr;
 }

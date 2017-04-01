@@ -60,6 +60,20 @@ public:
 	* @return la valeur
 	*/
 	std::string obtenirValeur() const;
+
+	/**
+	* Retourne un noeud selon son niveau
+	* @param niveau : Le niveau
+	* @return le noeud
+	*/
+	std::vector<std::shared_ptr<Noeud>> obtenirMotsSelonNiveau(int niveau);
+
+	/**
+	* Retourne un mot selon son 
+	* @param niveau : le niveau
+	* @param noeudsTrouves : le noeud avec le mot
+	*/
+	void obtenirMotSelonNiveau(int niveau, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves);
 #pragma endregion
 
 	/**
@@ -103,6 +117,5 @@ private:
 
 	std::shared_ptr<Noeud> parent_;
 	std::vector<std::shared_ptr<Noeud>> enfants_;
-
 };
 

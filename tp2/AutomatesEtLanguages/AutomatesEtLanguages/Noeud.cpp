@@ -49,11 +49,6 @@ std::string Noeud::obtenirValeur() const
 	return valeur_;
 }
 
-bool Noeud::trouverChaineDansSousArbre(std::string) const
-{
-	return false;
-}
-
 void Noeud::AfficherEnfants() const
 {
 	for (auto i : enfants_) {

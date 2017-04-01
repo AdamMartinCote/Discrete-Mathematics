@@ -55,7 +55,7 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		}
 		break;
 	case '2':
-		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '3':
 		std::cout << "Veuillez entrer un mot:";
@@ -64,11 +64,11 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		std::cout << "Voici le mot corrigé : " << "\n";
 		std::cout << motCorrige << "\n";
 
-		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		
 		break;
 	case '4':
-		//ChoixRetourAuMenu(controleur, choixUtilisateur);
+		ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '5':
 		std::cout << "Merci d'avoir utiliser notre application..." << "\n";

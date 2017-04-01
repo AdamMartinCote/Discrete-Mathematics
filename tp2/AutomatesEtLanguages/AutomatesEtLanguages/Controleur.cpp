@@ -35,8 +35,8 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 	lexique_->obtenirLesArbres()[0]->AfficherPremierMotDuSousArbre();
 	std::cout << "\n sous-arbre [6]:  ";
 	lexique_->obtenirLesArbres()[6]->AfficherPremierMotDuSousArbre();
-	std::cout << "\n sous-arbre [12]:  ";
-	lexique_->obtenirLesArbres()[12]->AfficherPremierMotDuSousArbre();
+	std::cout << "\n sous-arbre [19]:  ";
+	lexique_->obtenirLesArbres()[19]->AfficherPremierMotDuSousArbre();
 	std::cout << std::endl;
 	// ************************************************************************************* //
 

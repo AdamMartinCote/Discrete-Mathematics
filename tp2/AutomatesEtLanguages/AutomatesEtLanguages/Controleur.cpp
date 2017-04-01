@@ -29,8 +29,8 @@ std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 	{
 		mockCreated = true;
 		// Création du MOCK de lexique.
-		std::shared_ptr<Noeud> noeauA(new Noeud("a", false, 0)),
-			noeudB(new Noeud("ab", true, 1)), noeudC(new Noeud("ac", false, 1));
+		std::shared_ptr<Noeud> noeauA(new Noeud("a", false, 1)),
+			noeudB(new Noeud("ab", true, 2)), noeudC(new Noeud("ac", false, 2));
 		lexique_->ajouterArbre(noeauA);
 		lexique_->ajouterNoeud(noeudB, 'a');
 		lexique_->ajouterNoeud(noeudC, 'a');

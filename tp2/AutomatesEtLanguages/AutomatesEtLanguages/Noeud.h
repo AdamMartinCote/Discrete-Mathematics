@@ -15,6 +15,7 @@ public:
 
 	std::vector<std::shared_ptr<Noeud>> obtenirEnfants() const;
 	int obtenirNombreEnfants() const;
+	std::vector<std::shared_ptr<Noeud>> obtenirMotsSelonNiveau(int niveau);
 	void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
 	std::shared_ptr<Noeud> obtenirParent() const;
 	bool verifierSousChaine(std::string sousChaine);
@@ -39,6 +40,6 @@ private:
 	std::vector<std::shared_ptr<Noeud>> enfants_;
 
 	bool verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre);
-
+	void Noeud::obtenirMotSelonNiveau(int niveau, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves);
 };
 

@@ -3,7 +3,7 @@
 #include "Controleur.h"
 #include "UsineLexique.h"
 
-const int INDICE_LEXIQUE = 1;
+const int INDICE_LEXIQUE = 6;
 
 // prototypes
 void MenuPrincipal(Controleur* controleur);

@@ -1,8 +1,9 @@
 #include <iostream>
 #include "Controleur.h"
 
-Controleur::Controleur()
+Controleur::Controleur(): lexique_(new Lexique())
 {	
+
 }
 
 Controleur::~Controleur()
@@ -23,19 +24,19 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 	return false;
 }
 
+static bool mockCreated = false;
 std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 {
-	// Création du MOCK de lexique.
-	std::shared_ptr<Noeud> noeauA(new Noeud("a", true, 0)),
-		noeudB(new Noeud("ab", true, 1));
-	lexique_->ajouterArbre(noeauA);
-	lexique_->ajouterNoeud(noeudB, 'a');
+	if (!mockCreated)
+	{
+		mockCreated = true;
+		// Création du MOCK de lexique.
+		std::shared_ptr<Noeud> noeauA(new Noeud("a", false, 0)),
+			noeudB(new Noeud("ab", true, 1)), noeudC(new Noeud("ac", false, 1));
+		lexique_->ajouterArbre(noeauA);
+		lexique_->ajouterNoeud(noeudB, 'a');
+		lexique_->ajouterNoeud(noeudC, 'a');
+	}
 
-	std::string motRetourne = mot;
-	// Vérifier si le mot fait partit d'un des mots du lexique.
-		// Si oui, retourne le mot. Celui-ci est bien orthographié.
-	if(lexique_->verifierSousChaine(mot))
-		return motRetourne;
-
-	// Si non, recherche parmi les mots commençant par la même lettre un mot qui s'apparente à celui-ci.
+	return Correcteur::VerifierOrthographeDuMot(mot, lexique_->ObtenirArbreDeLaLettre(mot.at(0)));
 }

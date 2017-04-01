@@ -1,5 +1,6 @@
 #include <string>
 #include "Lexique.h"
+#include "Correcteur.h"
 #include "UsineLexique.h"
 #pragma once
 class Controleur

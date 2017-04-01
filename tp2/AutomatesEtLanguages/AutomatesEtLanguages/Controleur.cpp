@@ -5,6 +5,12 @@ Controleur::Controleur()
 {	
 }
 
+Controleur::~Controleur()
+{
+}
+
+bool Controleur::quitterProgramme = false;
+
 bool Controleur::InitialiserProgramme(std::string cheminFichier)
 {
 	lexique_ = UsineLexique::initialiserLexique(cheminFichier);
@@ -34,6 +40,3 @@ std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 }
 
 
-Controleur::~Controleur()
-{
-}

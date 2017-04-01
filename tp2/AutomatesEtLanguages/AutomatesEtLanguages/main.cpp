@@ -14,19 +14,16 @@ int main() {
 	setlocale(LC_ALL, "");
 	Controleur controleur;
 
-	try {
+	while (!controleur.quitterProgramme) {
 		MenuPrincipal(&controleur);
-	}
-	catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
 	}
 	return 0;
 }
 
 void MenuPrincipal(Controleur* controleur)
 {
-	char choixUtilisateur;
 	AfficherMenu();
+	char choixUtilisateur;
 	std::cin >> choixUtilisateur;
 	ExecuterChoix(choixUtilisateur, controleur);
 }
@@ -50,10 +47,15 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 	switch (choixUtilisateur)
 	{
 	case '1':
-		controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
+		try {
+			controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
+		}
+		catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+		}
 		break;
 	case '2':
-		ChoixRetourAuMenu(controleur, choixUtilisateur);
+		//ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '3':
 		std::cout << "Veuillez entrer un mot:";
@@ -62,15 +64,17 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 		std::cout << "Voici le mot corrigé : " << "\n";
 		std::cout << motCorrige << "\n";
 
-		ChoixRetourAuMenu(controleur, choixUtilisateur);
+		//ChoixRetourAuMenu(controleur, choixUtilisateur);
 		
 		break;
 	case '4':
-		ChoixRetourAuMenu(controleur, choixUtilisateur);
+		//ChoixRetourAuMenu(controleur, choixUtilisateur);
 		break;
 	case '5':
 		std::cout << "Merci d'avoir utiliser notre application..." << "\n";
-		system("pause");
+		controleur->quitterProgramme = true;
+		//system("pause");
+		std::cin.get();	// portabilité linux
 		break;
 	}
 }

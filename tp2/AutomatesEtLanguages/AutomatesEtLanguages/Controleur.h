@@ -9,6 +9,8 @@ public:
 	bool InitialiserProgramme(std::string cheminFichier);
 	std::string VerifierOrthographeDuMot(std::string mot);
 	~Controleur();
+
+	static bool quitterProgramme;
 private:
 	std::unique_ptr<Lexique> lexique_;
 };

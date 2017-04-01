@@ -13,9 +13,11 @@ bool Controleur::quitterProgramme = false;
 
 bool Controleur::InitialiserProgramme(std::string cheminFichier)
 {
-	lexique_ = UsineLexique::initialiserLexique(cheminFichier);
+	//lexique_ = UsineLexique::initialiserLexique(cheminFichier);
+	lexique_ = UsineLexique::initialiserLexiqueOptimise1(cheminFichier);
+
 	// DEBUG verifie si le lexique est bien chargé (affiche les premieres lettres)
-	for (int i = 0; i < lexique_->obtenirLesArbres().size(); i++) {
+	for (unsigned int i = 0; i < lexique_->obtenirLesArbres().size(); i++) {
 		std::cout << lexique_->obtenirLesArbres().at(i)->obtenirValeur() << " ";
 	}
 	return false;
@@ -36,7 +38,4 @@ std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 		return motRetourne;
 
 	// Si non, recherche parmi les mots commençant par la même lettre un mot qui s'apparente à celui-ci.
-	
 }
-
-

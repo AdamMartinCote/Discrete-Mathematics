@@ -184,6 +184,7 @@ DIST          = /home/arizona/Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		../AutomatesEtLanguages/.qmake.stash \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -345,6 +346,7 @@ Makefile: ../AutomatesEtLanguages/AutomatesEtLanguages.pro /home/arizona/Qt/5.7/
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
 		/home/arizona/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf \
@@ -498,6 +500,7 @@ Makefile: ../AutomatesEtLanguages/AutomatesEtLanguages.pro /home/arizona/Qt/5.7/
 /home/arizona/Qt/5.7/gcc_64/mkspecs/features/qt_config.prf:
 /home/arizona/Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
 /home/arizona/Qt/5.7/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /home/arizona/Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 /home/arizona/Qt/5.7/gcc_64/mkspecs/features/default_pre.prf:
 /home/arizona/Qt/5.7/gcc_64/mkspecs/features/resolve_config.prf:
@@ -898,7 +901,64 @@ mainwindow.o: ../AutomatesEtLanguages/mainwindow.cpp ../AutomatesEtLanguages/mai
 		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qtouchdevice.h \
 		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qtabwidget.h \
 		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/QVariant \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QAction \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qaction.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qactiongroup.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QApplication \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qapplication.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qcoreapplication.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qeventloop.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qguiapplication.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qinputmethod.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QButtonGroup \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QHeaderView \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qheaderview.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qframe.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qitemselectionmodel.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qstyleoption.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qvalidator.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qregularexpression.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qslider.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractslider.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qstyle.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qtabbar.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qrubberband.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QLineEdit \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qlineedit.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qtextcursor.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qtextformat.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qpen.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qtextoption.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QMenu \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qmenu.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QMenuBar \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qmenubar.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QPushButton \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qpushbutton.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QStatusBar \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qstatusbar.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QTextBrowser \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qtextbrowser.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qtextedit.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtGui/qtextdocument.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QWidget \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QFileDialog \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qfiledialog.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qdir.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtCore/qfileinfo.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qdialog.h \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/QMessageBox \
+		/home/arizona/Qt/5.7/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../AutomatesEtLanguages/mainwindow.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

@@ -72,7 +72,7 @@ void GestionnaireSuggestions::SuggestionsMots(std::shared_ptr<Lexique> lexique, 
 		//On rempli un vecteur de suggestions
 		suggestions = gestionnaireSuggestion.RemplirTableauSuggestions(suggestions, noeudContenantLeMot);
 		//On affiche les suggestions
-		std::cout << suggestions;
+		//std::cout << suggestions;
 	}
 }
 

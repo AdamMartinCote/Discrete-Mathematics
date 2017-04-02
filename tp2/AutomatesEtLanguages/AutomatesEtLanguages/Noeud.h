@@ -16,7 +16,7 @@ public:
 	/**
 	* Le constructeur d'un noeud
 	*/
-	Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent);
+	Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared_ptr<Noeud> parent);
 	
 	/**
 	* Le destructeur
@@ -84,7 +84,7 @@ public:
 	* Ajouter un enfant à un noeud
 	* @param noeudAAjouter : Le noeud enfant à ajouter
 	*/
-	void Noeud::ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
+	void ajouterEnfant(std::shared_ptr<Noeud> noeudAAjouter);
 
 	// debug
 	/**

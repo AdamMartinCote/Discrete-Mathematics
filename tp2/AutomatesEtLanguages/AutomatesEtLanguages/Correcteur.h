@@ -11,6 +11,6 @@ public:
 	~Correcteur();
 	static std::string VerifierOrthographeDuMot(std::string mot, std::shared_ptr<Noeud> arbreDeLaLettre);
 private:
-	static std::shared_ptr<Noeud> Correcteur::filtreNoeudsAvecUneSeuleDifference(std::vector<std::shared_ptr<Noeud>> noeuds, std::string mot);
+	static std::shared_ptr<Noeud> filtreNoeudsAvecUneSeuleDifference(std::vector<std::shared_ptr<Noeud>> noeuds, std::string mot);
 };
 

@@ -118,6 +118,12 @@ void MainWindow::on_boutonRevenirMenu_clicked()
     ui->EntrerTextSuggestionCorrection->setVisible(false);
     ui->textOutput->setVisible(false);
     ui->boutonRevenirMenu->setVisible(false);
+
+    //Vider les zones de text
+    ui->EntrerTextSuggestion->clear();
+    ui->EntrerTextCorrection->clear();
+    ui->EntrerTextSuggestionCorrection->clear();
+    ui->textOutput->clear();
 }
 
 
@@ -125,7 +131,8 @@ void MainWindow::on_boutonRevenirMenu_clicked()
 void MainWindow::on_EntrerTextSuggestion_textChanged(const QString &arg1)
 {
     //TODO : Utiliser fonction suggestion
-    QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
+    if(arg1 != "")
+        QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
 }
 
 void MainWindow::on_EntrerTextCorrection_returnPressed()
@@ -137,5 +144,6 @@ void MainWindow::on_EntrerTextCorrection_returnPressed()
 void MainWindow::on_EntrerTextSuggestionCorrection_textChanged(const QString &arg1)
 {
     //TODO : Utiliser fonction suggestion
-    QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
+    if(arg1!="")
+        QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
 }

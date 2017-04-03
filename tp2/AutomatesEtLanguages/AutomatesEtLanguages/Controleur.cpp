@@ -20,7 +20,8 @@ std::shared_ptr<Lexique > Controleur::ObtenirLexique() const
 bool Controleur::InitialiserProgramme(std::string cheminFichier)
 {
 	//lexique_ = UsineLexique::initialiserLexique(cheminFichier);
-	lexique_ = UsineLexique::initialiserLexiqueOptimise1(cheminFichier);
+	//lexique_ = UsineLexique::initialiserLexiqueOptimise1(cheminFichier);
+	lexique_ = UsineLexique::initialiserLexiqueOptimise2(cheminFichier);
 
 	// ************************************************************************************** //
 	// DEBUG verifie si le lexique est bien chargé (affiche les premieres lettres)

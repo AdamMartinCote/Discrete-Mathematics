@@ -10,5 +10,6 @@ public:
 
 	static std::unique_ptr<Lexique> initialiserLexique(std::string nomFichier);
 	static std::unique_ptr<Lexique> initialiserLexiqueOptimise1(std::string nomFichier);
+	static std::unique_ptr<Lexique> initialiserLexiqueOptimise2(std::string nomFichier);
 };
 

@@ -15,7 +15,7 @@ GestionnaireSuggestions::~GestionnaireSuggestions()
 std::shared_ptr<Noeud> GestionnaireSuggestions::RechercheNoeudMot(std::string motEntree, 
 	std::shared_ptr<Noeud> noeudDeRecherche) {
 	std::shared_ptr<Noeud> temp = noeudDeRecherche;
-	for (int i = 1; i < motEntree.size(); i++) {
+	for (unsigned int i = 1; i < motEntree.size(); i++) {
 		for (auto noeud : temp->obtenirEnfants()) {
 			if (motEntree[i] == noeud->obtenirValeur()[noeud->obtenirValeur().size() - 1]) {
 				temp = noeud;

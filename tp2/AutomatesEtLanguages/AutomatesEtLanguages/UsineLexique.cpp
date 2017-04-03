@@ -94,9 +94,9 @@ std::unique_ptr<Lexique> UsineLexique::initialiserLexiqueOptimise2(std::string n
 	while (std::getline(fichier, buffer)) {
 
 		auto nouveauNoeud = std::make_shared<Noeud>(buffer.substr(0, 1), false, 1);	//premiere lettre
-		auto dernierNoeud = nouveauNoeud;
+		std::shared_ptr<Noeud> dernierNoeud = nouveauNoeud;
 
-		std::vector<std::shared_ptr<Noeud>>::iterator it = lexique->lettresArbres_.begin();
+		std::vector<std::shared_ptr<Noeud> >::iterator it = lexique->lettresArbres_.begin();
 		while (
 			it != lexique->lettresArbres_.end() &&
 			(*it)->obtenirValeur() != nouveauNoeud->obtenirValeur())
@@ -114,8 +114,8 @@ std::unique_ptr<Lexique> UsineLexique::initialiserLexiqueOptimise2(std::string n
 
 			sousChaine = buffer.substr(0, longueurSousChaine);
 			for (unsigned int i = 0; i < dernierNoeud->obtenirEnfants().size(); i++) {
-				if (lexique->lettresArbres_.at(i)->obtenirValeur() == sousChaine) {
-					dernierNoeud = lexique->lettresArbres_.at(i);
+				if (dernierNoeud.get()->obtenirEnfants().at(i).get()->obtenirValeur() == sousChaine) {
+					dernierNoeud = dernierNoeud->obtenirEnfants().at(i);
 				}
 			}
 			if (dernierNoeud->obtenirValeur() != sousChaine) {

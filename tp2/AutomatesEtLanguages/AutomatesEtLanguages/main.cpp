@@ -2,6 +2,7 @@
 #include <clocale>
 #include "Controleur.h"
 #include "UsineLexique.h"
+#include "test.h"
 
 const int INDICE_LEXIQUE = 1;
 
@@ -50,6 +51,11 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 	case '1':
 		try {
 			controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
+			// ***** TESTS ***** //
+			test::afficherPremierMotDUneRacine(controleur->ObtenirLexique().get(), 2);
+			test::afficherPremierMotDUneRacine(controleur->ObtenirLexique().get(), 7);
+
+			
 		}
 		catch (std::exception& e) {
 			std::cout << e.what() << std::endl;

@@ -10,15 +10,22 @@ Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau, std::shared
 
 Noeud::Noeud(std::string valeur, bool estUnMot, unsigned int niveau)
 	: valeur_(valeur), estUnMot_(estUnMot), niveau_(niveau)
-{
-}
+{}
 
 Noeud::~Noeud()
 {
 }
 
-std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
+bool Noeud::contientEnfants()
 {
+	if (enfants_.empty())
+		return false;
+	else
+		return true;
+}
+
+std::vector<std::shared_ptr<Noeud>> Noeud::obtenirEnfants() const
+{		
 	return enfants_;
 }
 
@@ -34,17 +41,12 @@ bool Noeud::estUnMot() const
 
 unsigned int Noeud::obtenirNiveau() const
 {
-	return 0;
+	return niveau_;
 }
 
 std::string Noeud::obtenirValeur() const
 {
 	return valeur_;
-}
-
-bool Noeud::trouverChaineDansSousArbre(std::string) const
-{
-	return false;
 }
 
 void Noeud::AfficherEnfants() const
@@ -78,9 +80,33 @@ int Noeud::obtenirNombreEnfants() const {
 	return enfants_.size();
 }
 
+std::vector<std::shared_ptr<Noeud>> Noeud::obtenirMotsSelonNiveau(int niveau)
+{
+	std::vector<std::shared_ptr<Noeud>> noeudsTrouves;
+	auto ptrNoeudsTrouvesPartages = std::make_shared<std::vector<std::shared_ptr<Noeud>>>(noeudsTrouves);
+
+	if (niveau == niveau_)
+		noeudsTrouves.push_back(std::shared_ptr<Noeud>(this));
+	obtenirMotSelonNiveau(niveau, ptrNoeudsTrouvesPartages);
+	return *ptrNoeudsTrouvesPartages.get();
+}
+
+void Noeud::obtenirMotSelonNiveau(int niveauRecherche, std::shared_ptr<std::vector<std::shared_ptr<Noeud>>> noeudsTrouves)
+{
+	for (std::shared_ptr<Noeud> enfant : enfants_)
+	{
+		if (enfant->estUnMot() && niveauRecherche == enfant->obtenirNiveau())
+			noeudsTrouves->push_back(enfant);
+		else
+			enfant->obtenirMotSelonNiveau(niveauRecherche, noeudsTrouves);
+	}
+}
+
 bool Noeud::verifierSousChaine(std::string sousChaine)
 {
-	return verifierSousChaine(sousChaine, obtenirEnfants());
+	if(contientEnfants())
+		return verifierSousChaine(sousChaine, obtenirEnfants());
+	return false;
 }
 
 bool Noeud::verifierSousChaine(std::string sousChaine, std::vector<std::shared_ptr<Noeud>> SousArbre)

@@ -33,5 +33,8 @@ ipch/
 *.vspx
 *.sap
 
+#QT cache
+*.o
+
 ./tp1/Referentiel_pokemon_go/Referentiel_pokemon_go.VC.db
 */.suo

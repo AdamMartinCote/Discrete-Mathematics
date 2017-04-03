@@ -152,6 +152,7 @@
     <ClCompile Include="Lexique.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Noeud.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="UsineLexique.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="GestionnaireSuggestions.h" />
     <ClInclude Include="Lexique.h" />
     <ClInclude Include="Noeud.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="UsineLexique.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

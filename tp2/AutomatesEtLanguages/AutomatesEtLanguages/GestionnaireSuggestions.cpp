@@ -13,9 +13,10 @@ GestionnaireSuggestions::~GestionnaireSuggestions()
 }
 
 std::shared_ptr<Noeud> GestionnaireSuggestions::RechercheNoeudMot(std::string motEntree, 
+
 	std::shared_ptr<Noeud> noeudInitial) {
 	std::shared_ptr<Noeud> noeudActuel = noeudInitial;
-	for (int i = 1; i < motEntree.size(); i++) { //Pour toutes les lettres du mot entrée
+	for (unsigned int i = 1; i < motEntree.size(); i++) { //Pour toutes les lettres du mot entrée
 		for (auto noeud : noeudActuel->obtenirEnfants()) {
 			//On vérifie si les enfants du noeud actuel ont la lettre en cours
 			if (motEntree[i] == noeud->obtenirValeur()[noeud->obtenirValeur().size() - 1]) {

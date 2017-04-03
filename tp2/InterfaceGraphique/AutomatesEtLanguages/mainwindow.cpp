@@ -14,6 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->EntrerTextSuggestionCorrection->setVisible(false);
     ui->textOutput->setVisible(false);
     ui->boutonRevenirMenu->setVisible(false);
+    ui->textTitreSuggestion->setVisible(false);
+    ui->textTitreCorrection->setVisible(false);
+    ui->textTitreSuggestionCorrection->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -62,12 +65,14 @@ void MainWindow::on_boutonSuggestion_clicked()
     ui->boutonCorrection->setVisible(false);
     ui->boutonSuggestionCorrection->setVisible(false);
     ui->boutonQuitter->setVisible(false);
+    ui->textTitreMain->setVisible(false);
 
     //Montrer suggestion
     ui->textEntrerMot->setVisible(true);
     ui->EntrerTextSuggestion->setVisible(true);
     ui->textOutput->setVisible(true);
     ui->boutonRevenirMenu->setVisible(true);
+    ui->textTitreSuggestion->setVisible(true);
 }
 
 void MainWindow::on_boutonCorrection_clicked()
@@ -78,12 +83,14 @@ void MainWindow::on_boutonCorrection_clicked()
     ui->boutonCorrection->setVisible(false);
     ui->boutonSuggestionCorrection->setVisible(false);
     ui->boutonQuitter->setVisible(false);
+    ui->textTitreMain->setVisible(false);
 
     //Montrer correction
     ui->textEntrerMot->setVisible(true);
     ui->EntrerTextCorrection->setVisible(true);
     ui->textOutput->setVisible(true);
     ui->boutonRevenirMenu->setVisible(true);
+    ui->textTitreCorrection->setVisible(true);
 }
 
 void MainWindow::on_boutonSuggestionCorrection_clicked()
@@ -94,12 +101,14 @@ void MainWindow::on_boutonSuggestionCorrection_clicked()
     ui->boutonCorrection->setVisible(false);
     ui->boutonSuggestionCorrection->setVisible(false);
     ui->boutonQuitter->setVisible(false);
+    ui->textTitreMain->setVisible(false);
 
     //Montrer suggestion-correction
     ui->textEntrerMot->setVisible(true);
     ui->EntrerTextSuggestionCorrection->setVisible(true);
     ui->textOutput->setVisible(true);
     ui->boutonRevenirMenu->setVisible(true);
+    ui->textTitreSuggestionCorrection->setVisible(true);
 }
 
 void MainWindow::on_boutonRevenirMenu_clicked()
@@ -110,6 +119,7 @@ void MainWindow::on_boutonRevenirMenu_clicked()
     ui->boutonCorrection->setVisible(true);
     ui->boutonSuggestionCorrection->setVisible(true);
     ui->boutonQuitter->setVisible(true);
+    ui->textTitreMain->setVisible(true);
 
     //Cacher les bouton hors menu principal
     ui->textEntrerMot->setVisible(false);
@@ -118,6 +128,9 @@ void MainWindow::on_boutonRevenirMenu_clicked()
     ui->EntrerTextSuggestionCorrection->setVisible(false);
     ui->textOutput->setVisible(false);
     ui->boutonRevenirMenu->setVisible(false);
+    ui->textTitreSuggestion->setVisible(false);
+    ui->textTitreCorrection->setVisible(false);
+    ui->textTitreSuggestionCorrection->setVisible(false);
 
     //Vider les zones de text
     ui->EntrerTextSuggestion->clear();

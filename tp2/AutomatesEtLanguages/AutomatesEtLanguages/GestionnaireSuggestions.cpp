@@ -52,7 +52,7 @@ std::vector<std::string> GestionnaireSuggestions::RemplirTableauSuggestions(std:
 }
 
 
-void GestionnaireSuggestions::SuggestionsMots(std::shared_ptr<Lexique> lexique, std::string motEntree)const {
+std::string GestionnaireSuggestions::SuggestionsMots(std::shared_ptr<Lexique> lexique, std::string motEntree)const {
 	GestionnaireSuggestions gestionnaireSuggestion;
 	std::shared_ptr<Noeud> noeudContenantLeMot;
 
@@ -66,14 +66,20 @@ void GestionnaireSuggestions::SuggestionsMots(std::shared_ptr<Lexique> lexique, 
 	noeudContenantLeMot = gestionnaireSuggestion.RechercheNoeudMot(motEntree, noeudContenantLeMot);
 	
 	//Si le noeud est le nullptr, on affiche qu'on n'a pas de suggestion
-	if (noeudContenantLeMot == nullptr)
+	if (noeudContenantLeMot == nullptr) {
 		std::cout << "Aucunes suggestions" << std::endl;
+		return "";
+	}
 	else {
 		std::vector<std::string> suggestions;
 		//On rempli un vecteur de suggestions
 		suggestions = gestionnaireSuggestion.RemplirTableauSuggestions(suggestions, noeudContenantLeMot);
 		//On affiche les suggestions
-		std::cout << suggestions;
+		std::string resultat = "";
+		for (std::string suggestion : suggestions) {
+			resultat += suggestion + '\n';
+		}
+		return resultat;
 	}
 }
 

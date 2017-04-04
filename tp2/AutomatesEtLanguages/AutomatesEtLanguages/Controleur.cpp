@@ -24,11 +24,12 @@ bool Controleur::InitialiserProgramme(std::string cheminFichier)
 }
 
 
-void Controleur::SuggestionDeMots(std::string motEntree) const
+std::string Controleur::SuggestionDeMots(std::string motEntree) const
 {
 	GestionnaireSuggestions gestionnaireSuggestions;
 	Lexique lexique;
-	gestionnaireSuggestions.SuggestionsMots(lexique_, motEntree);
+	return gestionnaireSuggestions.SuggestionsMots(lexique_, motEntree);
+	
 }
 
 static bool mockCreated = false;
@@ -46,4 +47,12 @@ std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 	}
 
 	return Correcteur::VerifierOrthographeDuMot(mot, lexique_->ObtenirArbreDeLaLettre(mot.at(0)));
+}
+
+std::string Controleur::SuggestionCorrection(std::string motEntree) const {
+	GestionnaireSuggestions gestionnaireSuggestions;
+	std::string resultat = gestionnaireSuggestions.SuggestionsMots(lexique_, motEntree);
+	if (resultat == "")
+		resultat = Correcteur::VerifierOrthographeDuMot(motEntree, lexique_->ObtenirArbreDeLaLettre(motEntree.at(0)));
+	return resultat;
 }

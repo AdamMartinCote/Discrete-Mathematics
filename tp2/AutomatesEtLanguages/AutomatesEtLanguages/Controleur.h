@@ -10,8 +10,9 @@ public:
 	Controleur();
 	std::shared_ptr<Lexique> ObtenirLexique() const;
 	bool InitialiserProgramme(std::string cheminFichier);
-	void SuggestionDeMots(std::string motEntree) const;
+	std::string SuggestionDeMots(std::string motEntree) const;
 	std::string VerifierOrthographeDuMot(std::string mot);
+	std::string SuggestionCorrection(std::string motEntree) const;
 	~Controleur();
 
 	static bool quitterProgramme;

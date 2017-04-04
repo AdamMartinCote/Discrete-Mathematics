@@ -39,7 +39,7 @@ public:
 	* @param lexique : Le lexique dans lequel chercher
 	* @param motEntree : Le mot entrée
 	*/
-	void SuggestionsMots(std::shared_ptr<Lexique> lexique, std::string motEntree) const;
+	std::string SuggestionsMots(std::shared_ptr<Lexique> lexique, std::string motEntree) const;
 
 	/**
 	* Surcharge de l'opérateur << pour afficher un vecteur de string

@@ -19,6 +19,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->textTitreSuggestion->setVisible(false);
     ui->textTitreCorrection->setVisible(false);
     ui->textTitreSuggestionCorrection->setVisible(false);
+    ui->textEntrerMot_2->setVisible(false);
+    ui->boutonSuggestion->setVisible(false);
+    ui->boutonCorrection->setVisible(false);
+    ui->boutonSuggestionCorrection->setVisible(false);
+    ui->boutonQuitter->setVisible(false);
+    ui->textTitreMain->setVisible(false);
 }
 
 MainWindow::~MainWindow()
@@ -44,12 +50,18 @@ void MainWindow::on_boutonOuvrir_clicked()
     std::string nomDuFichierConverti = nomDuFichier.toUtf8().constData();
     std::replace( nomDuFichierConverti.begin(), nomDuFichierConverti.end(), '\\', '/');
     QString message = "Le lexique " + QString::fromStdString(nomDuFichierConverti);
+    if (nomDuFichierConverti != ""){
+        QMessageBox::information(this, tr("Importation en cours..."), message + " est en cours d'exportation..." , tr("Ok"));
+        controleur.InitialiserProgramme(nomDuFichierConverti);
 
-    QMessageBox::information(this, tr("Importation en cours..."), message + " est en cours d'exportation..." , tr("Ok"));
-    controleur.InitialiserProgramme(nomDuFichierConverti);
-
-    if(nomDuFichierConverti!= "")
+        if(nomDuFichierConverti!= "")
         QMessageBox::information(this, tr("Lexique Importé"), message + "est importé." , tr("Ok"));
+        ui->boutonSuggestion->setVisible(true);
+        ui->boutonCorrection->setVisible(true);
+        ui->boutonSuggestionCorrection->setVisible(true);
+        ui->boutonQuitter->setVisible(true);
+        ui->textTitreMain->setVisible(true);
+    }
 }
 
 void MainWindow::on_actionSuggestion_triggered()
@@ -94,11 +106,11 @@ void MainWindow::on_boutonCorrection_clicked()
     ui->textTitreMain->setVisible(false);
 
     //Montrer correction
-    ui->textEntrerMot->setVisible(true);
     ui->EntrerTextCorrection->setVisible(true);
     ui->textOutput->setVisible(true);
     ui->boutonRevenirMenu->setVisible(true);
     ui->textTitreCorrection->setVisible(true);
+    ui->textEntrerMot_2->setVisible(true);
 }
 
 void MainWindow::on_boutonSuggestionCorrection_clicked()
@@ -112,7 +124,7 @@ void MainWindow::on_boutonSuggestionCorrection_clicked()
     ui->textTitreMain->setVisible(false);
 
     //Montrer suggestion-correction
-    ui->textEntrerMot->setVisible(true);
+    ui->textEntrerMot_2->setVisible(true);
     ui->EntrerTextSuggestionCorrection->setVisible(true);
     ui->textOutput->setVisible(true);
     ui->boutonRevenirMenu->setVisible(true);
@@ -139,6 +151,7 @@ void MainWindow::on_boutonRevenirMenu_clicked()
     ui->textTitreSuggestion->setVisible(false);
     ui->textTitreCorrection->setVisible(false);
     ui->textTitreSuggestionCorrection->setVisible(false);
+    ui->textEntrerMot_2->setVisible(false);
 
     //Vider les zones de text
     ui->EntrerTextSuggestion->clear();

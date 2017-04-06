@@ -15,7 +15,7 @@ std::string Correcteur::VerifierOrthographeDuMot(std::string mot, std::shared_pt
 {
 	std::vector<std::shared_ptr<Noeud>> motsPotentiels;
 	std::string motRetourne = mot;
-	int niveauMot = mot.size();
+    size_t niveauMot = mot.size();
 
 	// Vérifier si le mot fait partit d'un des mots du lexique.
 	// Si oui, retourne le mot. Celui-ci est bien orthographié.
@@ -45,10 +45,10 @@ std::shared_ptr<Noeud> Correcteur::filtreNoeudsAvecUneSeuleDifference(std::vecto
 		// La boucle sort s'il y a plus de deux erreurs.
 		// OU si la position de droite dépasse la position de gauche.
 		// OU si la position de guache et égale à la position de droite.
-		for (int i = 0, j = mot.size() - 1; erreurNoeudCourant < 2 && i < j; i++, j--)
+        for (size_t i = 0, j = mot.size() - 1; erreurNoeudCourant < 2 && i < j; i++, j--)
 		{
 			carMotCourantGauche = mot.at(i);
-			carMotCourantDroite = mot.at(j);
+            carMotCourantDroite = mot.at(j);
 			carNoeudCourantGauche = noeud->obtenirValeur().at(i);
 			carNoeudCourantDroite = noeud->obtenirValeur().at(j);
 

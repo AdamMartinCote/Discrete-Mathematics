@@ -36,7 +36,7 @@ std::string Controleur::SuggestionDeMots(std::string motEntree) const
 static bool mockCreated = false;
 std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 {
-	if (!mockCreated)
+    /*if (!mockCreated)
 	{
 		mockCreated = true;
 		// Création du MOCK de lexique.
@@ -45,7 +45,7 @@ std::string Controleur::VerifierOrthographeDuMot(std::string mot)
 		lexique_->ajouterArbre(noeauA);
 		lexique_->ajouterNoeud(noeudB, 'a');
 		lexique_->ajouterNoeud(noeudC, 'a');
-	}
+    }*/
 
 	return Correcteur::VerifierOrthographeDuMot(mot, lexique_->ObtenirArbreDeLaLettre(mot.at(0)));
 }

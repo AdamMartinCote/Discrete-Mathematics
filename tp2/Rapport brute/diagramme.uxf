@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>270</y>
+      <w>300</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>UsineLexique
+--
+/initialiserLexique(string)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>360</y>
+      <w>300</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Lexique
+--
+vector&lt;shared_ptr&lt;Noeud&gt; &gt; lettresArbres_
+--
+/ObtenirLettresArbres()/
+/ajouterArbre(shared_ptr&lt;Noeud&gt;)/
+/ajouterNoeud(std::shared_ptr&lt;Noeud&gt;, char)/
+/contientLettre(char)/
+/ObtenirArbreDeLaLettre(char)/
+/obtenirLesArbres()/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>320</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>620</x>
+      <y>550</y>
+      <w>370</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>Noeud
+--
+string valeur_
+bool estUnMot_
+unsigned int niveau_
+shared_ptr&lt;Noeud&gt; parent_
+vector&lt;shared_ptr&lt;Noeud&gt; &gt; enfants_
+--
+/estUnMot()/
+/contientEnfants()/
+/ajouterEnfant()/
+/AfficherEnfants()/
+/AfficherPremierMotDuSousArbre()/
+/marquerUnMot()/
+/verifierSousChaine(string)/
+/verifierSousChaine(string, vector&lt;shared_ptr&lt;Noeud&gt; &gt;)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>500</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>90</y>
+      <w>300</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Controleur
+--
+shared_ptr&lt;Lexique&gt; lexique_
+--
+/ObtenirLexique()/
+/InitialiserProgramme(string)/
+/SuggestionDeMots(string)/
+/VerifierOrthographeDuMot(string)/
+/SuggestionCorrection(string)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>220</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>200</x>
+      <y>270</y>
+      <w>430</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>GestionnaireSuggestion
+--
+/RechercheNoeudMot(string ,shared_ptr&lt;Noeud&gt;)/
+/RemplirTableauSuggestions(vector&lt;string&gt;&amp;, shared_ptr&lt;Noeud&gt;)/
+/SuggestionsMots(shared_ptr&lt;Lexique&gt;, string)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>270</y>
+      <w>480</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Correcteur
+--
+/VerifierOrthographeDuMot(string, shared_ptr&lt;Noeud&gt;)/
+/filtreNoeudsAvecUneSeuleDifference(vector&lt;shared_ptr&lt;Noeud&gt; &gt;, string)/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>850</x>
+      <y>220</y>
+      <w>380</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>360.0;50.0;360.0;20.0;10.0;20.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>400</x>
+      <y>220</y>
+      <w>360</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;20.0;340.0;20.0;340.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>330</y>
+      <w>290</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;270.0;80.0;270.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>390</x>
+      <y>340</y>
+      <w>280</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>260.0;70.0;10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

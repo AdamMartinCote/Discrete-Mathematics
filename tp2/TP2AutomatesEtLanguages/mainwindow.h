@@ -1,7 +1,16 @@
-#ifndef MAINWINDOW_H
+﻿#ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "Controleur.h"
+#include <string>
+#include <memory>
+#include <vector>
+#include <iostream>
+#include <clocale>
+#include "UsineLexique.h"
+
+const int INDICE_LEXIQUE = 1;
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +47,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    Controleur controleur;
 };
 
 #endif // MAINWINDOW_H

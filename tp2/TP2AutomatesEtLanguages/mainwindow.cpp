@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFileDialog>
 #include <QMessageBox>
@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    setlocale(LC_ALL, "");
+
     ui->setupUi(this);
     ui->textEntrerMot->setVisible(false);
     ui->EntrerTextSuggestion->setVisible(false);
@@ -33,15 +35,21 @@ void MainWindow::on_boutonQuitter_clicked()
 void MainWindow::on_boutonOuvrir_clicked()
 {
     //TODO : Initialiser un lexique
-    QString filename=QFileDialog::getOpenFileName(
+    QString nomDuFichier=QFileDialog::getOpenFileName(
                 this,
                 tr("Choisir un lexique"),
                 "C://",
                 "Text File (*.txt);;All Files (*.*)");
-    QString textbox="Le lexique "  + filename + " a bien été importé.";
 
-    if(filename!= "")
-        QMessageBox::information(this, tr("Lexique Importé"), textbox , tr("Ok"));
+    std::string nomDuFichierConverti = nomDuFichier.toUtf8().constData();
+    std::replace( nomDuFichierConverti.begin(), nomDuFichierConverti.end(), '\\', '/');
+    QString message = "Le lexique " + QString::fromStdString(nomDuFichierConverti);
+
+    QMessageBox::information(this, tr("Importation en cours..."), message + " est en cours d'exportation..." , tr("Ok"));
+    controleur.InitialiserProgramme(nomDuFichierConverti);
+
+    if(nomDuFichierConverti!= "")
+        QMessageBox::information(this, tr("Lexique Importé"), message + "est importé." , tr("Ok"));
 }
 
 void MainWindow::on_actionSuggestion_triggered()
@@ -143,9 +151,18 @@ void MainWindow::on_boutonRevenirMenu_clicked()
 
 void MainWindow::on_EntrerTextSuggestion_textChanged(const QString &arg1)
 {
-    //TODO : Utiliser fonction suggestion
-    if(arg1 != "")
-        QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
+    try{
+        if(arg1 != "" && arg1 != NULL)
+        {
+            QString texteEntre = QString::fromStdString(controleur.SuggestionDeMots(arg1.toUtf8().constData()));
+            ui->textOutput->setText(texteEntre);
+        }
+    }
+    catch(std::exception e)
+    {
+        QMessageBox::information(this, tr("Désolé..."), tr("Aucune suggestion.") , tr("Ok"));
+    }
+
 }
 
 void MainWindow::on_EntrerTextCorrection_returnPressed()

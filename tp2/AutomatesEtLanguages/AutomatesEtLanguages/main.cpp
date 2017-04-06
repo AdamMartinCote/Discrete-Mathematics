@@ -50,7 +50,9 @@ void ExecuterChoix(char choixUtilisateur, Controleur* controleur)
 	{
 	case '1':
 		try {
-			controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
+			//controleur->InitialiserProgramme("donnee/lexique" + std::to_string(INDICE_LEXIQUE) + ".txt");
+			controleur->InitialiserProgramme("C:/TP2LOG2810/donnee/lexique1.txt");
+			
 			// ***** TESTS ***** //
 			test::afficherPremierMotDUneRacine(controleur->ObtenirLexique().get(), 2);
 			test::afficherPremierMotDUneRacine(controleur->ObtenirLexique().get(), 7);

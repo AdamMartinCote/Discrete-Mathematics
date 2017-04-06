@@ -153,21 +153,64 @@ void MainWindow::on_EntrerTextSuggestion_textChanged(const QString &arg1)
 {
     if(arg1 != NULL && arg1 != "")
     {
-        QString texteEntre = QString::fromStdString(controleur.SuggestionDeMots(arg1.toUtf8().constData()));
-        texteEntre = (texteEntre == "" || texteEntre == NULL) ? " " : texteEntre;
-        ui->textOutput->setText(texteEntre);
+        // suggestion
+        ui->textOutput->setText(VerifierSuggererTexteEntree(arg1));
     }
 }
 
-void MainWindow::on_EntrerTextCorrection_returnPressed()
+void MainWindow::on_EntrerTextCorrection_textChanged(const QString &arg1)
 {
-    //TODO : Utiliser fonction correction
-    QMessageBox::information(this, tr("test"), tr("correction") , tr("Ok")); //Test pour vérifier si l'event fonctionne
+    if(arg1 != NULL && arg1 != "")
+    {
+        std::string textCorrige = AjusterEtVerifierTexteEntree(arg1);
+        if(textCorrige != "")
+            ui->EntrerTextCorrection->setText(QString::fromStdString(textCorrige));
+    }
 }
 
 void MainWindow::on_EntrerTextSuggestionCorrection_textChanged(const QString &arg1)
 {
-    //TODO : Utiliser fonction suggestion
-    if(arg1!="")
-        QMessageBox::information(this, tr("test"), tr("suggestion") , tr("Ok")); //Test pour vérifier si l'event fonctionne
+    if(arg1 != NULL && arg1 != "")
+    {
+        // suggestion
+        ui->textOutput->setText(VerifierSuggererTexteEntree(arg1));
+
+        // correction
+        std::string textCorrige = AjusterEtVerifierTexteEntree(arg1);
+        if(textCorrige != "")
+            ui->EntrerTextSuggestionCorrection->setText(QString::fromStdString(textCorrige));
+    }
+}
+
+std::string MainWindow::AjusterEtVerifierTexteEntree(const QString &texteUtilisateur)
+{
+    std::string entre = texteUtilisateur.toUtf8().constData();
+    std::string debutChain = "";
+
+    if(entre.at(entre.size()-1) == ' ')
+    {
+        entre.pop_back();
+
+        // On s'assure que l'on évalue un seul mot et non plusieurs.
+        if (entre.find(" ") != std::string::npos) {
+            std::size_t derniereEspace = entre.find_last_of(' ');
+            debutChain = entre.substr(0, derniereEspace) + ' ';
+            entre = entre.substr(derniereEspace+1);
+        }
+
+        return debutChain + controleur.VerifierOrthographeDuMot(entre) + " ";
+    }
+    return "";
+}
+
+QString MainWindow::VerifierSuggererTexteEntree(const QString &texteUtilisateur)
+{
+    std::string entreeUtilisateur = texteUtilisateur.toUtf8().constData();
+    // suggestion
+    if (entreeUtilisateur.find(" ") != std::string::npos) {
+        std::size_t derniereEspace = entreeUtilisateur.find_last_of(' ');
+        entreeUtilisateur = entreeUtilisateur.substr(derniereEspace+1);
+    }
+    QString texteAEvaluer = QString::fromStdString(controleur.SuggestionDeMots(entreeUtilisateur));
+    return (texteAEvaluer == "" || texteAEvaluer == NULL) ? " " : texteAEvaluer;
 }

@@ -37,17 +37,19 @@ private slots:
 
     void on_EntrerTextSuggestion_textChanged(const QString &arg1);
 
-    void on_EntrerTextCorrection_returnPressed();
+    void on_EntrerTextCorrection_textChanged(const QString &arg1);
+
+    void on_EntrerTextSuggestionCorrection_textChanged(const QString &arg1);
 
     void on_boutonCorrection_clicked();
 
     void on_boutonSuggestionCorrection_clicked();
 
-    void on_EntrerTextSuggestionCorrection_textChanged(const QString &arg1);
-
 private:
     Ui::MainWindow *ui;
     Controleur controleur;
+    std::string AjusterEtVerifierTexteEntree(const QString &texteUtilisateur);
+    QString VerifierSuggererTexteEntree(const QString &texteUtilisateur);
 };
 
 #endif // MAINWINDOW_H

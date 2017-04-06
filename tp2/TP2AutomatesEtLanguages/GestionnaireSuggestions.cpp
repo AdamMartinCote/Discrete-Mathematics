@@ -16,21 +16,22 @@ std::shared_ptr<Noeud> GestionnaireSuggestions::RechercheNoeudMot(std::string mo
 
 	std::shared_ptr<Noeud> noeudInitial) {
 	std::shared_ptr<Noeud> noeudActuel = noeudInitial;
-	for (unsigned int i = 1; i < motEntree.size(); i++) { //Pour toutes les lettres du mot entrée
-		for (auto noeud : noeudActuel->obtenirEnfants()) {
-			//On vérifie si les enfants du noeud actuel ont la lettre en cours
-			if (motEntree[i] == noeud->obtenirValeur()[noeud->obtenirValeur().size() - 1]) {
-				//Si oui, le noeud contenant la lettre actuel devient le noeud actuel
-				noeudActuel = noeud;
-			}
-		}
-	}
-	if (noeudActuel->obtenirValeur() == motEntree)
-		//Si on a trouvé un noeud contenant le mot, on le retourne
-		return noeudActuel;
-	else
-		//Sinon on retourne le nullptr pour signifier que rien n'a été trouvé
-		return nullptr;
+    if(noeudActuel != nullptr)
+    {
+        for (unsigned int i = 1; i < motEntree.size(); i++) { //Pour toutes les lettres du mot entrée
+            for (auto noeud : noeudActuel->obtenirEnfants()) {
+                //On vérifie si les enfants du noeud actuel ont la lettre en cours
+                if (motEntree[i] == noeud->obtenirValeur()[noeud->obtenirValeur().size() - 1]) {
+                    //Si oui, le noeud contenant la lettre actuel devient le noeud actuel
+                    noeudActuel = noeud;
+                }
+            }
+        }
+        if (noeudActuel->obtenirValeur() == motEntree)
+            //Si on a trouvé un noeud contenant le mot, on le retourne
+            return noeudActuel;
+    }
+    return nullptr;
 }
 
 std::vector<std::string> GestionnaireSuggestions::RemplirTableauSuggestions(std::vector<std::string>& suggestions, 

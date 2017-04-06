@@ -151,18 +151,12 @@ void MainWindow::on_boutonRevenirMenu_clicked()
 
 void MainWindow::on_EntrerTextSuggestion_textChanged(const QString &arg1)
 {
-    try{
-        if(arg1 != "" && arg1 != NULL)
-        {
-            QString texteEntre = QString::fromStdString(controleur.SuggestionDeMots(arg1.toUtf8().constData()));
-            ui->textOutput->setText(texteEntre);
-        }
-    }
-    catch(std::exception e)
+    if(arg1 != NULL && arg1 != "")
     {
-        QMessageBox::information(this, tr("Désolé..."), tr("Aucune suggestion.") , tr("Ok"));
+        QString texteEntre = QString::fromStdString(controleur.SuggestionDeMots(arg1.toUtf8().constData()));
+        texteEntre = (texteEntre == "" || texteEntre == NULL) ? " " : texteEntre;
+        ui->textOutput->setText(texteEntre);
     }
-
 }
 
 void MainWindow::on_EntrerTextCorrection_returnPressed()

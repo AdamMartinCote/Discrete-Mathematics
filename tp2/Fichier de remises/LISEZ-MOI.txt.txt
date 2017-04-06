@@ -1,0 +1,22 @@
+*************************************************
+*		 TEAM ARTIFICES			*
+*	     AUTOMATES ET LANGAGES		*
+*************************************************
+
+Pour ouvrir le logiciel :
+1) Ouvrir le dossier Automates et Langages
+2) Double-Cliquer sur automatesetlangages.exe
+
+Une fois l'application ouverte :
+1) Cliquer sur Ouvrir un lexique
+2) Choisir un lexique à importer. Nous avons inclus les 6 Lexiques fournis dans le dossier Lexiques
+3) S'amuser avec les différentes applications de notre menu
+
+Bonne utilisation,
+Team artifices.
+
+******************************** À NOTER ********************************
+*     Nous avons inclus dans le dossier Fichiers Visual Studio notre    *
+*   logiciel version Visual Studio afin de montrer comment nous avons   *
+*  créé nos fonctions avant de les ajouter à notre interface graphique  *
+*************************************************************************
